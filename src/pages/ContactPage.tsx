@@ -195,150 +195,90 @@ export default function ContactPage() {
 								<label className="block text-violet-200 mb-6 font-medium text-xl">
 									Servicios de Interés
 								</label>
-								<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-									{/* Desarrollo Web */}
-									<motion.div
-										className="p-6 rounded-xl bg-white bg-opacity-5 backdrop-blur-sm border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300 group"
-										whileHover={{ scale: 1.02 }}
-										whileTap={{ scale: 0.98 }}
-									>
-										<div className="flex items-center gap-3 mb-4">
-											<div className="p-3 rounded-lg bg-purple-500/10 group-hover:bg-purple-500/20 transition-colors">
-												<svg className="w-6 h-6 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-													<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-												</svg>
+								<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+									{/* Marketing Digital */}
+									<label className="cursor-pointer group h-full">
+										<motion.div
+											className="h-full p-4 rounded-xl bg-white bg-opacity-5 backdrop-blur-sm border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300 relative flex flex-col justify-between"
+											whileHover={{ scale: 1.02 }}
+											whileTap={{ scale: 0.98 }}
+										>
+											<div>
+												<h3 className="text-violet-200 font-medium mb-2">Marketing Digital</h3>
+												<p className="text-violet-300/80 text-sm">Estrategias digitales para potenciar tu presencia online</p>
 											</div>
-											<h3 className="text-violet-200 font-medium text-lg">Desarrollo Web</h3>
-										</div>
-										<div className="space-y-3">
-											<label className="flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 transition-colors cursor-pointer group/item">
+											<div className="flex items-center justify-between gap-4 mt-4">
+												<div className="p-2 rounded-lg bg-purple-500/10 group-hover:bg-purple-500/20 transition-colors">
+													<svg className="w-6 h-6 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+														<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
+													</svg>
+												</div>
+												<input
+													type="checkbox"
+													name="serviceInterest"
+													value="digital-marketing"
+													onChange={handleServiceChange}
+													className="w-5 h-5 text-purple-500 rounded border-purple-400/50 focus:ring-purple-500 focus:ring-offset-0 transition-all"
+												/>
+											</div>
+										</motion.div>
+									</label>
+
+									{/* Desarrollo Web */}
+									<label className="cursor-pointer group h-full">
+										<motion.div
+											className="h-full p-4 rounded-xl bg-white bg-opacity-5 backdrop-blur-sm border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300 relative flex flex-col justify-between"
+											whileHover={{ scale: 1.02 }}
+											whileTap={{ scale: 0.98 }}
+										>
+											<div>
+												<h3 className="text-violet-200 font-medium mb-2">Desarrollo Web</h3>
+												<p className="text-violet-300/80 text-sm">Sitios web modernos y aplicaciones web personalizadas</p>
+											</div>
+											<div className="flex items-center justify-between gap-4 mt-4">
+												<div className="p-2 rounded-lg bg-purple-500/10 group-hover:bg-purple-500/20 transition-colors">
+													<svg className="w-6 h-6 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+														<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+													</svg>
+												</div>
 												<input
 													type="checkbox"
 													name="serviceInterest"
 													value="web-development"
 													onChange={handleServiceChange}
-													className="form-checkbox text-purple-500 rounded border-purple-400/50 focus:ring-purple-500 focus:ring-offset-0 transition-all"
+													className="w-5 h-5 text-purple-500 rounded border-purple-400/50 focus:ring-purple-500 focus:ring-offset-0 transition-all"
 												/>
-												<span className="text-violet-200 group-hover/item:text-white transition-colors">Desarrollo Web Profesional</span>
-											</label>
-											<label className="flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 transition-colors cursor-pointer group/item">
+											</div>
+										</motion.div>
+									</label>
+
+									{/* E-commerce */}
+									<label className="cursor-pointer group h-full">
+										<motion.div
+											className="h-full p-4 rounded-xl bg-white bg-opacity-5 backdrop-blur-sm border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300 relative flex flex-col justify-between"
+											whileHover={{ scale: 1.02 }}
+											whileTap={{ scale: 0.98 }}
+										>
+											<div>
+												<h3 className="text-violet-200 font-medium mb-2">E-commerce</h3>
+												<p className="text-violet-300/80 text-sm">Tiendas online optimizadas para ventas</p>
+											</div>
+											<div className="flex items-center justify-between gap-4 mt-4">
+												<div className="p-2 rounded-lg bg-purple-500/10 group-hover:bg-purple-500/20 transition-colors">
+													<svg className="w-6 h-6 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+														<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+													</svg>
+												</div>
 												<input
 													type="checkbox"
 													name="serviceInterest"
 													value="ecommerce"
 													onChange={handleServiceChange}
-													className="form-checkbox text-purple-500 rounded border-purple-400/50 focus:ring-purple-500 focus:ring-offset-0 transition-all"
+													className="w-5 h-5 text-purple-500 rounded border-purple-400/50 focus:ring-purple-500 focus:ring-offset-0 transition-all"
 												/>
-												<span className="text-violet-200 group-hover/item:text-white transition-colors">Comercio Electrónico</span>
-											</label>
-											<label className="flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 transition-colors cursor-pointer group/item">
-												<input
-													type="checkbox"
-													name="serviceInterest"
-													value="wordpress"
-													onChange={handleServiceChange}
-													className="form-checkbox text-purple-500 rounded border-purple-400/50 focus:ring-purple-500 focus:ring-offset-0 transition-all"
-												/>
-												<span className="text-violet-200 group-hover/item:text-white transition-colors">WordPress</span>
-											</label>
-										</div>
-									</motion.div>
-
-									{/* Software y Nube */}
-									<motion.div
-										className="p-6 rounded-xl bg-white bg-opacity-5 backdrop-blur-sm border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300 group"
-										whileHover={{ scale: 1.02 }}
-										whileTap={{ scale: 0.98 }}
-									>
-										<div className="flex items-center gap-3 mb-4">
-											<div className="p-3 rounded-lg bg-purple-500/10 group-hover:bg-purple-500/20 transition-colors">
-												<svg className="w-6 h-6 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-													<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-												</svg>
 											</div>
-											<h3 className="text-violet-200 font-medium text-lg">Software y Nube</h3>
-										</div>
-										<div className="space-y-3">
-											<label className="flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 transition-colors cursor-pointer group/item">
-												<input
-													type="checkbox"
-													name="serviceInterest"
-													value="custom-software"
-													onChange={handleServiceChange}
-													className="form-checkbox text-purple-500 rounded border-purple-400/50 focus:ring-purple-500 focus:ring-offset-0 transition-all"
-												/>
-												<span className="text-violet-200 group-hover/item:text-white transition-colors">Software a Medida</span>
-											</label>
-											<label className="flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 transition-colors cursor-pointer group/item">
-												<input
-													type="checkbox"
-													name="serviceInterest"
-													value="cloud-development"
-													onChange={handleServiceChange}
-													className="form-checkbox text-purple-500 rounded border-purple-400/50 focus:ring-purple-500 focus:ring-offset-0 transition-all"
-												/>
-												<span className="text-violet-200 group-hover/item:text-white transition-colors">Computación en la Nube</span>
-											</label>
-											<label className="flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 transition-colors cursor-pointer group/item">
-												<input
-													type="checkbox"
-													name="serviceInterest"
-													value="database-development"
-													onChange={handleServiceChange}
-													className="form-checkbox text-purple-500 rounded border-purple-400/50 focus:ring-purple-500 focus:ring-offset-0 transition-all"
-												/>
-												<span className="text-violet-200 group-hover/item:text-white transition-colors">Bases de Datos</span>
-											</label>
-										</div>
-									</motion.div>
-
-									{/* Servicios Avanzados */}
-									<motion.div
-										className="p-6 rounded-xl bg-white bg-opacity-5 backdrop-blur-sm border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300 group"
-										whileHover={{ scale: 1.02 }}
-										whileTap={{ scale: 0.98 }}
-									>
-										<div className="flex items-center gap-3 mb-4">
-											<div className="p-3 rounded-lg bg-purple-500/10 group-hover:bg-purple-500/20 transition-colors">
-												<svg className="w-6 h-6 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-													<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-												</svg>
-											</div>
-											<h3 className="text-violet-200 font-medium text-lg">Servicios Avanzados</h3>
-										</div>
-										<div className="space-y-3">
-											<label className="flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 transition-colors cursor-pointer group/item">
-												<input
-													type="checkbox"
-													name="serviceInterest"
-													value="mobile-development"
-													onChange={handleServiceChange}
-													className="form-checkbox text-purple-500 rounded border-purple-400/50 focus:ring-purple-500 focus:ring-offset-0 transition-all"
-												/>
-												<span className="text-violet-200 group-hover/item:text-white transition-colors">Desarrollo Móvil</span>
-											</label>
-											<label className="flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 transition-colors cursor-pointer group/item">
-												<input
-													type="checkbox"
-													name="serviceInterest"
-													value="saas-development"
-													onChange={handleServiceChange}
-													className="form-checkbox text-purple-500 rounded border-purple-400/50 focus:ring-purple-500 focus:ring-offset-0 transition-all"
-												/>
-												<span className="text-violet-200 group-hover/item:text-white transition-colors">Desarrollo SaaS</span>
-											</label>
-											<label className="flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 transition-colors cursor-pointer group/item">
-												<input
-													type="checkbox"
-													name="serviceInterest"
-													value="ai-services"
-													onChange={handleServiceChange}
-													className="form-checkbox text-purple-500 rounded border-purple-400/50 focus:ring-purple-500 focus:ring-offset-0 transition-all"
-												/>
-												<span className="text-violet-200 group-hover/item:text-white transition-colors">Servicios de IA</span>
-											</label>
-										</div>
-									</motion.div>
+										</motion.div>
+									</label>
 								</div>
 							</div>
 							<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
