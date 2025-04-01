@@ -35,41 +35,33 @@ import SubscriptionPopup from './components/SubscriptionPopup'
 import { useState } from 'react'
 import React from 'react'
 import { LanguageProvider } from './context/LanguageContext'
-import WebDevelopmentPage from './pages/WebDevelopmentPage'
-import CustomSoftwarePage from './pages/CustomSoftwarePage'
-import CloudDevelopmentPage from './pages/CloudDevelopmentPage'
-import DatabaseDevelopmentPage from './pages/DatabaseDevelopmentPage'
-import MobileAppDevelopmentPage from './pages/MobileAppDevelopmentPage'
-import SaaSDevelopmentPage from './pages/SaaSDevelopmentPage'
-import TechnicalSupportPage from './pages/TechnicalSupportPage'
-import AiServicesPage from './pages/AiServicesPage'
+import DigitalMarketingPage from './pages/DigitalMarketingPage'
 import EcommercePage from './pages/EcommercePage'
 import WordPressPage from './pages/WordPressPage'
-import TiendaPage from './pages/TiendaPage'
 
 // Protected route component for user account and settings pages
 const ProtectedRoute = ({ children }) => {
   const { user, isLoading } = useAuth();
-  
+
   // Only protect user-specific pages after loading completes
-  if (!isLoading && !user && (window.location.pathname.includes('/profile') || 
-      window.location.pathname.includes('/settings') || 
-      window.location.pathname.includes('/plan-management'))) {
+  if (!isLoading && !user && (window.location.pathname.includes('/profile') ||
+    window.location.pathname.includes('/settings') ||
+    window.location.pathname.includes('/plan-management'))) {
     return <Navigate to="/pricing" />;
   }
-  
+
   return children;
 };
 
 // Dashboard redirect based on user subscription
 function DashboardRoute() {
   const { user, userSubscription } = useAuth();
-  
+
   // If not logged in, default to interactive demo
   if (!user) {
     return <Navigate to="/interactive-demo" />;
   }
-  
+
   // Redirect based on subscription plan
   switch (userSubscription?.plan_id) {
     case '2':
@@ -99,16 +91,9 @@ function AppContent() {
       <Routes>
         {/* Public Routes */}
         <Route path="/reset-password" element={<AuthPopup triggerReason="manual" />} />
+        <Route path="/digital-marketing" element={<DigitalMarketingPage />} />
         <Route path="/ecommerce" element={<EcommercePage />} />
         <Route path="/wordpress" element={<WordPressPage />} />
-        <Route path="/web-development" element={<WebDevelopmentPage />} />
-        <Route path="/custom-software" element={<CustomSoftwarePage />} />
-        <Route path="/cloud-development" element={<CloudDevelopmentPage />} />
-        <Route path="/database-development" element={<DatabaseDevelopmentPage />} />
-        <Route path="/mobile-app-development" element={<MobileAppDevelopmentPage />} />
-        <Route path="/saas-development" element={<SaaSDevelopmentPage />} />
-        <Route path="/technical-support" element={<TechnicalSupportPage />} />
-        <Route path="/ai-services" element={<AiServicesPage />} />
         <Route path="/" element={
           <div className="min-h-screen bg-theme-gradient">
             <Header variant="default" />
@@ -116,10 +101,10 @@ function AppContent() {
               <div className="container mx-auto px-4">
                 <div className="text-center max-w-4xl mx-auto">
                   <h1 className="text-5xl md:text-7xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-purple-200 to-violet-200">
-                    Soluciones de Software Profesionales y Servicios de IA
+                    Potencia tu Negocio con Marketing Digital de Alto Impacto
                   </h1>
                   <p className="text-lg md:text-xl text-violet-200 mb-12">
-                    Transformamos tus ideas en soluciones tecnológicas innovadoras: Desarrollo web, software a medida, cloud computing y servicios de IA para impulsar tu negocio al siguiente nivel
+                    Transformamos tu presencia digital en resultados medibles: Aumenta tus ventas hasta un 300%, multiplica tu audiencia y maximiza tu ROI con estrategias probadas
                   </p>
                   <div className="flex flex-col sm:flex-row justify-center gap-4">
                     <button
@@ -138,15 +123,15 @@ function AppContent() {
               <div className="container mx-auto px-4">
                 <div className="text-center mb-12">
                   <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                    Servicios Profesionales de Software Engineering
+                    Panel de Control Inteligente para tu Marketing
                   </h2>
                   <p className="text-violet-200 text-lg max-w-2xl mx-auto">
-                    Desde desarrollo web hasta inteligencia artificial, ofrecemos soluciones tecnológicas completas para transformar tu visión en realidad.
+                    Monitorea en tiempo real el rendimiento de tus campañas, ROI y engagement. Toma decisiones basadas en datos para maximizar tus resultados.
                   </p>
                 </div>
                 <div className="max-w-5xl mx-auto">
                   <div className="bg-gradient-to-br from-purple-900/50 to-violet-800/50 backdrop-blur-sm p-8 rounded-2xl border border-purple-700/30">
-                    <DashboardPreview type="web" />
+                    <DashboardPreview type="marketing" />
                   </div>
                 </div>
               </div>
@@ -156,147 +141,63 @@ function AppContent() {
             <section className="py-20">
               <div className="container mx-auto px-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {/* Desarrollo Web */}
-                  <div className="bg-white bg-opacity-5 backdrop-blur-sm rounded-2xl p-8 cursor-pointer transform transition-all hover:scale-105" onClick={() => navigate('/web-development')}>
-                    <div className="text-4xl mb-6">💻</div>
-                    <h3 className="text-2xl font-semibold text-white mb-4">
-                      Desarrollo Web Profesional
-                    </h3>
-                    <p className="text-violet-200 mb-4">
-                      Creamos experiencias web excepcionales que impulsan el crecimiento de tu negocio:
-                    </p>
-                    <ul className="text-violet-200 mb-6 list-disc list-inside space-y-2">
-                      <li>Aplicaciones web empresariales de alto rendimiento</li>
-                      <li>Optimización avanzada de velocidad y SEO</li>
-                      <li>Diseño UX/UI centrado en conversión</li>
-                      <li>Integración con sistemas empresariales</li>
-                      <li>Arquitectura escalable y segura</li>
-                    </ul>
-                    <div className="text-sm text-violet-300 p-4 bg-purple-900/30 rounded-lg mb-4">
-                      <strong>Stack Tecnológico:</strong> React, Next.js, Vue.js, Node.js, GraphQL
-                    </div>
-                    <div className="text-sm text-green-300 p-4 bg-green-900/30 rounded-lg">
-                      <strong>Caso de Éxito:</strong> +300% en conversiones para e-commerce B2B
-                    </div>
-                  </div>
-
-                  {/* Software a Medida */}
-                  <div className="bg-white bg-opacity-5 backdrop-blur-sm rounded-2xl p-8 cursor-pointer transform transition-all hover:scale-105" onClick={() => navigate('/custom-software')}>
-                    <div className="text-4xl mb-6">🔧</div>
-                    <h3 className="text-2xl font-semibold text-white mb-4">
-                      Software Empresarial a Medida
-                    </h3>
-                    <p className="text-violet-200 mb-4">
-                      Soluciones personalizadas que transforman desafíos en ventajas competitivas:
-                    </p>
-                    <ul className="text-violet-200 mb-6 list-disc list-inside space-y-2">
-                      <li>Automatización de procesos críticos</li>
-                      <li>Sistemas ERP y CRM personalizados</li>
-                      <li>Integración con APIs y servicios externos</li>
-                      <li>Migración y modernización de sistemas</li>
-                      <li>Análisis de datos y Business Intelligence</li>
-                    </ul>
-                    <div className="text-sm text-violet-300 p-4 bg-purple-900/30 rounded-lg mb-4">
-                      <strong>Tecnologías:</strong> Java, Python, .NET, Node.js, Microservicios
-                    </div>
-                    <div className="text-sm text-green-300 p-4 bg-green-900/30 rounded-lg">
-                      <strong>Impacto:</strong> 60% reducción en costos operativos
-                    </div>
-                  </div>
-
-                  {/* Servicios Cloud */}
-                  <div className="bg-white bg-opacity-5 backdrop-blur-sm rounded-2xl p-8 cursor-pointer transform transition-all hover:scale-105" onClick={() => navigate('/cloud-development')}>
-                    <div className="text-4xl mb-6">☁️</div>
-                    <h3 className="text-2xl font-semibold text-white mb-4">
-                      Desarrollo Cloud & DevOps
-                    </h3>
-                    <p className="text-violet-200 mb-4">
-                      Infraestructura cloud moderna y escalable para tu negocio:
-                    </p>
-                    <ul className="text-violet-200 mb-6 list-disc list-inside space-y-2">
-                      <li>Arquitectura cloud-native</li>
-                      <li>Implementación de CI/CD</li>
-                      <li>Containerización y orquestación</li>
-                      <li>Monitoreo y optimización</li>
-                      <li>Seguridad cloud avanzada</li>
-                    </ul>
-                    <div className="text-sm text-violet-300 p-4 bg-purple-900/30 rounded-lg mb-4">
-                      <strong>Plataformas:</strong> AWS, Azure, GCP, Kubernetes
-                    </div>
-                    <div className="text-sm text-green-300 p-4 bg-green-900/30 rounded-lg">
-                      <strong>Resultado:</strong> 99.99% uptime y 40% reducción en costos
-                    </div>
-                  </div>
-
-                  {/* Desarrollo Móvil */}
-                  <div className="bg-white bg-opacity-5 backdrop-blur-sm rounded-2xl p-8 cursor-pointer transform transition-all hover:scale-105" onClick={() => navigate('/mobile-app-development')}>
-                    <div className="text-4xl mb-6">📱</div>
-                    <h3 className="text-2xl font-semibold text-white mb-4">
-                      Desarrollo de Apps Móviles
-                    </h3>
-                    <p className="text-violet-200 mb-4">
-                      Apps nativas y multiplataforma de alto impacto:
-                    </p>
-                    <ul className="text-violet-200 mb-6 list-disc list-inside space-y-2">
-                      <li>Desarrollo iOS y Android nativo</li>
-                      <li>Soluciones multiplataforma</li>
-                      <li>Integración con backends escalables</li>
-                      <li>Experiencia de usuario premium</li>
-                      <li>Analytics y engagement</li>
-                    </ul>
-                    <div className="text-sm text-violet-300 p-4 bg-purple-900/30 rounded-lg mb-4">
-                      <strong>Frameworks:</strong> React Native, Flutter, Swift, Kotlin
-                    </div>
-                    <div className="text-sm text-green-300 p-4 bg-green-900/30 rounded-lg">
-                      <strong>Logro:</strong> +1M descargas en apps empresariales
-                    </div>
-                  </div>
-
-                  {/* Desarrollo SaaS */}
-                  <div className="bg-white bg-opacity-5 backdrop-blur-sm rounded-2xl p-8 cursor-pointer transform transition-all hover:scale-105" onClick={() => navigate('/saas-development')}>
-                    <div className="text-4xl mb-6">🚀</div>
-                    <h3 className="text-2xl font-semibold text-white mb-4">
-                      Desarrollo de Soluciones SaaS
-                    </h3>
-                    <p className="text-violet-200 mb-4">
-                      Plataformas SaaS innovadoras y escalables:
-                    </p>
-                    <ul className="text-violet-200 mb-6 list-disc list-inside space-y-2">
-                      <li>Arquitectura multi-tenant</li>
-                      <li>Sistemas de facturación y suscripción</li>
-                      <li>Analíticas avanzadas</li>
-                      <li>Seguridad empresarial</li>
-                      <li>APIs y integraciones</li>
-                    </ul>
-                    <div className="text-sm text-violet-300 p-4 bg-purple-900/30 rounded-lg mb-4">
-                      <strong>Stack:</strong> Node.js, React, MongoDB, Redis, Docker
-                    </div>
-                    <div className="text-sm text-green-300 p-4 bg-green-900/30 rounded-lg">
-                      <strong>Métrica:</strong> 200% crecimiento MRR anual
-                    </div>
-                  </div>
-
-                  {/* Servicios de IA */}
-                  <div className="bg-white bg-opacity-5 backdrop-blur-sm rounded-2xl p-8 cursor-pointer transform transition-all hover:scale-105" onClick={() => navigate('/ai-services')}>
+                  {/* Content Marketing */}
+                  <div className="bg-white bg-opacity-5 backdrop-blur-sm rounded-2xl p-8 cursor-pointer transform transition-all hover:scale-105">
                     <div className="text-4xl mb-6">🤖</div>
                     <h3 className="text-2xl font-semibold text-white mb-4">
-                      Soluciones de IA Avanzada
+                      Copywriting y Content Marketing
                     </h3>
                     <p className="text-violet-200 mb-4">
-                      Inteligencia artificial que transforma tu negocio:
+                      Creamos contenido estratégico que impulsa resultados medibles:
                     </p>
                     <ul className="text-violet-200 mb-6 list-disc list-inside space-y-2">
-                      <li>Modelos de ML personalizados</li>
-                      <li>Procesamiento de lenguaje natural</li>
-                      <li>Visión por computadora</li>
-                      <li>Automatización inteligente</li>
-                      <li>Análisis predictivo</li>
+                      <li>Aumento del 150% en conversiones</li>
+                      <li>Mejora del 200% en engagement</li>
+                      <li>Optimización SEO avanzada</li>
+                      <li>Estrategias de contenido personalizadas</li>
                     </ul>
                     <div className="text-sm text-violet-300 p-4 bg-purple-900/30 rounded-lg mb-4">
-                      <strong>Tecnologías:</strong> TensorFlow, PyTorch, OpenAI, Hugging Face
+                      <strong>Caso de Éxito:</strong> Incrementamos el tráfico orgánico de E-Commerce en un 300% en 6 meses
                     </div>
-                    <div className="text-sm text-green-300 p-4 bg-green-900/30 rounded-lg">
-                      <strong>ROI:</strong> 500% mejora en eficiencia operativa
+                  </div>
+
+                  {/* Visual Design */}
+                  <div className="bg-white bg-opacity-5 backdrop-blur-sm rounded-2xl p-8 cursor-pointer transform transition-all hover:scale-105">
+                    <div className="text-4xl mb-6">🎨</div>
+                    <h3 className="text-2xl font-semibold text-white mb-4">
+                      Diseño Visual y Branding Digital
+                    </h3>
+                    <p className="text-violet-200 mb-4">
+                      Transformamos tu identidad visual para destacar en digital:
+                    </p>
+                    <ul className="text-violet-200 mb-6 list-disc list-inside space-y-2">
+                      <li>Aumento del 200% en engagement social</li>
+                      <li>Diseño UX/UI optimizado para conversión</li>
+                      <li>Branding consistente multiplataforma</li>
+                      <li>Contenido visual viral y compartible</li>
+                    </ul>
+                    <div className="text-sm text-violet-300 p-4 bg-purple-900/30 rounded-lg mb-4">
+                      <strong>Caso de Éxito:</strong> Rediseño de marca digital aumentó ventas online 250% en 3 meses
+                    </div>
+                  </div>
+
+                  {/* Market Analysis */}
+                  <div className="bg-white bg-opacity-5 backdrop-blur-sm rounded-2xl p-8 cursor-pointer transform transition-all hover:scale-105">
+                    <div className="text-4xl mb-6">📊</div>
+                    <h3 className="text-2xl font-semibold text-white mb-4">
+                      Análisis de Mercado y Estrategia Digital
+                    </h3>
+                    <p className="text-violet-200 mb-4">
+                      Decisiones basadas en datos para maximizar ROI:
+                    </p>
+                    <ul className="text-violet-200 mb-6 list-disc list-inside space-y-2">
+                      <li>Análisis competitivo profundo</li>
+                      <li>Identificación de nichos rentables</li>
+                      <li>Optimización de canales digitales</li>
+                      <li>Estrategias de crecimiento sostenible</li>
+                    </ul>
+                    <div className="text-sm text-violet-300 p-4 bg-purple-900/30 rounded-lg mb-4">
+                      <strong>Caso de Éxito:</strong> Estrategia omnicanal generó ROI de 400% en campaña trimestral
                     </div>
                   </div>
                 </div>
@@ -311,8 +212,8 @@ function AppContent() {
           </div>
         } />
 
+
         <Route path="/pricing" element={<PricingPage />} />
-        <Route path="/tienda" element={<TiendaPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/privacy" element={<PrivacyPage />} />
         <Route path="/terms" element={<TermsPage />} />
@@ -321,35 +222,35 @@ function AppContent() {
         <Route path="/models" element={<ModelsPage />} />
         <Route path="/models/:modelId" element={<ModelDetailPage />} />
         <Route path="/ai-tools" element={<AiToolsPage />} />
-        
+
         {/* Dashboard Routes - Now public but features require auth */}
         <Route path="/interactive-demo" element={<InteractiveDemoPage />} />
         <Route path="/starter-dashboard" element={<StarterDashboard />} />
         <Route path="/pro-dashboard" element={<ProDashboard />} />
         <Route path="/enterprise-dashboard" element={<EnterpriseDashboard />} />
-        
+
         {/* Protected User Account Routes */}
         <Route path="/profile" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
         <Route path="/settings" element={<ProtectedRoute><SettingsPage /></ProtectedRoute>} />
         <Route path="/subscription" element={<ProtectedRoute><SubscriptionPage /></ProtectedRoute>} />
         <Route path="/plan-management" element={<ProtectedRoute><PlanManagementPage /></ProtectedRoute>} />
         <Route path="/subscription/success" element={<ProtectedRoute><SubscriptionSuccessPage /></ProtectedRoute>} />
-        
+
         {/* Dashboard Redirect */}
         <Route path="/dashboard" element={<DashboardRoute />} />
       </Routes>
 
       {/* Popups */}
-      <ExploreModelsPopup 
-        isOpen={isExploreModelsOpen} 
-        onClose={() => setIsExploreModelsOpen(false)} 
+      <ExploreModelsPopup
+        isOpen={isExploreModelsOpen}
+        onClose={() => setIsExploreModelsOpen(false)}
       />
-      <LearnMorePopup 
-        isOpen={isLearnMoreOpen} 
-        onClose={() => setIsLearnMoreOpen(false)} 
+      <LearnMorePopup
+        isOpen={isLearnMoreOpen}
+        onClose={() => setIsLearnMoreOpen(false)}
       />
-      <SubscriptionPopup 
-        isOpen={isSubscriptionOpen} 
+      <SubscriptionPopup
+        isOpen={isSubscriptionOpen}
         onClose={() => setIsSubscriptionOpen(false)}
       />
     </>
