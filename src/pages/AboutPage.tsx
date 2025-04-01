@@ -7,69 +7,69 @@ import React from 'react'
 
 const engineeringServices = [
 	{
-		name: 'Desarrollo Web Profesional',
-		icon: <FiGlobe className="w-8 h-8" />,
-		description: 'Desarrollo de sitios web profesionales, e-commerce y aplicaciones web modernas utilizando las últimas tecnologías y mejores prácticas.',
-		metrics: '500+ proyectos exitosos',
-	},
-	{
-		name: 'Software & Cloud',
+		name: 'Marketing Digital',
 		icon: <FiTarget className="w-8 h-8" />,
-		description: 'Desarrollo de software a medida, soluciones cloud y bases de datos escalables para optimizar sus procesos empresariales.',
-		metrics: '200+ soluciones implementadas',
+		description: 'Estrategias integrales de SEO, SEM y gestión de redes sociales para maximizar su presencia online y generar leads cualificados.',
+		metrics: '500+ campañas exitosas',
 	},
 	{
-		name: 'Móvil & SaaS',
+		name: 'E-commerce con Shopify',
+		icon: <FiGlobe className="w-8 h-8" />,
+		description: 'Desarrollo y optimización de tiendas online con Shopify, incluyendo diseño personalizado, optimización de conversión y estrategias de ventas.',
+		metrics: '200+ tiendas optimizadas',
+	},
+	{
+		name: 'Desarrollo Web WordPress',
 		icon: <FiUsers className="w-8 h-8" />,
-		description: 'Desarrollo de aplicaciones móviles nativas y soluciones SaaS innovadoras para transformar su negocio.',
-		metrics: '300+ apps entregadas',
+		description: 'Creación de sitios web profesionales con WordPress, incluyendo landing pages, sitios corporativos y portales multipage.',
+		metrics: '300+ sitios entregados',
 	},
 	{
-		name: 'Servicios de IA',
+		name: 'Desarrollo SPA',
 		icon: <FiHeart className="w-8 h-8" />,
-		description: 'Implementación de soluciones avanzadas de Inteligencia Artificial y aprendizaje automático para potenciar su negocio.',
-		metrics: '150+ proyectos de IA',
+		description: 'Desarrollo de aplicaciones web modernas de una sola página (SPA) con las últimas tecnologías para una experiencia de usuario excepcional.',
+		metrics: '150+ aplicaciones SPA',
 	},
 ]
 
 const expertise = [
 	{
 		icon: <FiTarget className="w-8 h-8" />,
-		title: 'Desarrollo de Software',
-		description: 'Expertos en desarrollo de software a medida, aplicaciones web y móviles con tecnologías de última generación',
+		title: 'Marketing Digital Avanzado',
+		description: 'Estrategias integrales de SEO, SEM y redes sociales con ROI promedio del 300% para nuestros clientes',
 	},
 	{
 		icon: <FiUsers className="w-8 h-8" />,
-		title: 'Cloud & DevOps',
-		description: 'Especialistas en soluciones cloud, arquitectura de sistemas y prácticas DevOps para máxima eficiencia',
+		title: 'Desarrollo E-commerce',
+		description: 'Especialistas certificados en Shopify con más de 200 tiendas exitosas implementadas y optimizadas',
 	},
 	{
 		icon: <FiHeart className="w-8 h-8" />,
-		title: 'Inteligencia Artificial',
-		description: 'Pioneros en implementación de soluciones de IA y aprendizaje automático para optimización de procesos',
+		title: 'Desarrollo Web Profesional',
+		description: 'Expertos en WordPress y aplicaciones SPA, entregando soluciones web de alto rendimiento y conversión',
 	},
 ]
 
 const achievements = [
 	{
 		year: '2020',
-		title: 'Innovación en Software',
-		description: 'Desarrollamos más de 100 soluciones de software personalizadas, mejorando la eficiencia operativa de nuestros clientes en un 200%.',
+		title: 'Excelencia en Marketing Digital',
+		description: 'Alcanzamos un incremento promedio del 250% en tráfico orgánico para nuestros clientes mediante estrategias SEO avanzadas.',
 	},
 	{
 		year: '2021',
-		title: 'Liderazgo en Cloud',
-		description: 'Implementamos exitosamente más de 50 migraciones a la nube, reduciendo costos operativos en un promedio del 40%.',
+		title: 'Liderazgo en E-commerce',
+		description: 'Superamos los 10 millones en ventas generadas para nuestros clientes a través de tiendas Shopify optimizadas.',
 	},
 	{
 		year: '2022',
-		title: 'Excelencia en Desarrollo Móvil',
-		description: 'Lanzamos más de 100 aplicaciones móviles exitosas, alcanzando más de 1 millón de descargas combinadas.',
+		title: 'Innovación en Desarrollo Web',
+		description: 'Completamos más de 300 proyectos web exitosos, incluyendo portales corporativos y aplicaciones SPA de alto rendimiento.',
 	},
 	{
 		year: '2023',
-		title: 'Pioneros en IA',
-		description: 'Implementamos soluciones de IA que aumentaron la productividad de nuestros clientes en un promedio del 150%.',
+		title: 'Resultados Excepcionales',
+		description: 'Nuestras campañas de marketing digital generaron un ROI promedio del 300% para nuestros clientes en múltiples sectores.',
 	},
 ]
 
@@ -88,10 +88,10 @@ export default function AboutPage() {
 						className="text-center max-w-4xl mx-auto mb-24"
 					>
 						<h1 className="text-5xl md:text-7xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-purple-200 to-violet-200">
-							Expertos en Desarrollo de Software y Soluciones de IA
+							Expertos en Marketing Digital y Desarrollo Web
 						</h1>
 						<p className="text-xl text-violet-200 leading-relaxed">
-							Transformamos negocios con soluciones de software innovadoras y tecnología de vanguardia. Maximizamos su eficiencia con desarrollo personalizado, servicios cloud y soluciones de IA de alto impacto.
+							Transformamos negocios con estrategias digitales integrales y desarrollo web profesional. Maximizamos su ROI con soluciones personalizadas de marketing digital, e-commerce y desarrollo web de alto rendimiento.
 						</p>
 					</motion.div>
 
@@ -106,13 +106,13 @@ export default function AboutPage() {
 							<h2 className="text-2xl font-semibold text-white mb-4">
 								Nuestra Visión
 							</h2>
-							<p className="text-violet-200">Ser líderes en la transformación tecnológica de empresas, ofreciendo soluciones innovadoras de software, cloud computing e inteligencia artificial que generen valor medible y sostenible para nuestros clientes.</p>
+							<p className="text-violet-200">Ser líderes en la transformación digital de empresas, ofreciendo soluciones integrales de marketing digital y desarrollo web que generen resultados medibles y sostenibles para nuestros clientes.</p>
 						</div>
 						<div className="bg-white bg-opacity-5 backdrop-blur-sm rounded-2xl p-8">
 							<h2 className="text-2xl font-semibold text-white mb-4">
 								Nuestra Misión
 							</h2>
-							<p className="text-violet-200">Potenciar el crecimiento de nuestros clientes mediante soluciones tecnológicas avanzadas y desarrollo de software profesional, garantizando eficiencia operativa y ventaja competitiva en la era digital.</p>
+							<p className="text-violet-200">Potenciar el crecimiento de nuestros clientes mediante estrategias digitales avanzadas y desarrollo web profesional, garantizando un ROI excepcional y una presencia online impactante.</p>
 						</div>
 					</motion.div>
 

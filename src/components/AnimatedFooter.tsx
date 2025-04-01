@@ -45,7 +45,7 @@ export default function AnimatedFooter() {
                 </div>
                 <span className="text-2xl font-bold text-[var(--theme-text-primary)]">AILive</span>
               </Link>
-              <p className="text-[var(--theme-text-secondary)]">Como líderes en desarrollo de software y soluciones de IA, transformamos visiones en realidades digitales. Ofrecemos desarrollo web, software a medida, servicios cloud, aplicaciones móviles, SaaS y soporte técnico, impulsados por tecnología de vanguardia e inteligencia artificial. Nuestro equipo experto crea soluciones innovadoras que impulsan el crecimiento y la eficiencia de tus proyectos.</p>
+              <p className="text-[var(--theme-text-secondary)]">Expertos en marketing digital, desarrollo WordPress y soluciones e-commerce. Impulsamos el crecimiento de tu negocio con estrategias digitales integrales y tecnologías innovadoras.</p>
               <div className="pt-2">
                 <AuthButton variant="footer" />
               </div>
@@ -59,66 +59,26 @@ export default function AnimatedFooter() {
               <ul className="space-y-2">
                 <li>
                   <Link
-                    to="/web-development"
+                    to="/digital-marketing"
                     className="text-[var(--theme-text-secondary)] hover:text-[var(--theme-text-primary)] transition-colors"
                   >
-                    Desarrollo Web
+                    Marketing Digital
                   </Link>
                 </li>
                 <li>
                   <Link
-                    to="/custom-software"
+                    to="/wordpress"
                     className="text-[var(--theme-text-secondary)] hover:text-[var(--theme-text-primary)] transition-colors"
                   >
-                    Software a Medida
+                    Desarrollo WordPress
                   </Link>
                 </li>
                 <li>
                   <Link
-                    to="/cloud-development"
+                    to="/ecommerce"
                     className="text-[var(--theme-text-secondary)] hover:text-[var(--theme-text-primary)] transition-colors"
                   >
-                    Cloud Development
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/database-development"
-                    className="text-[var(--theme-text-secondary)] hover:text-[var(--theme-text-primary)] transition-colors"
-                  >
-                    Base de Datos
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/mobile-app-development"
-                    className="text-[var(--theme-text-secondary)] hover:text-[var(--theme-text-primary)] transition-colors"
-                  >
-                    Apps Móviles
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/saas-development"
-                    className="text-[var(--theme-text-secondary)] hover:text-[var(--theme-text-primary)] transition-colors"
-                  >
-                    SaaS
-                  </Link>
-                </li>
-                {/* <li>
-                  <Link
-                    to="/technical-support"
-                    className="text-[var(--theme-text-secondary)] hover:text-[var(--theme-text-primary)] transition-colors"
-                  >
-                    Soporte Técnico
-                  </Link>
-                </li> */}
-                <li>
-                  <Link
-                    to="/ai-services"
-                    className="text-[var(--theme-text-secondary)] hover:text-[var(--theme-text-primary)] transition-colors"
-                  >
-                    Servicios IA
+                    Soluciones E-commerce
                   </Link>
                 </li>
               </ul>
@@ -151,7 +111,7 @@ export default function AnimatedFooter() {
                       try {
                         const { error } = await newsletterService.subscribe(email);
                         if (error) {
-                          setError(typeof error === 'string' ? error : 'Error al suscribirse al newsletter');
+                          setError(error);
                         } else {
                           setShowSuccess(true);
                           setEmail('');
@@ -200,14 +160,14 @@ export default function AnimatedFooter() {
                     {t('about')}
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link
                     to="/pricing"
                     className="text-[var(--theme-text-secondary)] hover:text-[var(--theme-text-primary)] transition-colors"
                   >
                     {t('pricing')}
                   </Link>
-                </li>
+                </li> */}
                 <li>
                   <Link
                     to="/contact"
