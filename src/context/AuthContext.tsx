@@ -1,10 +1,10 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import { User, createClient, SupabaseClient } from '@supabase/supabase-js';
-import { 
-  hasAccess as checkAccess, 
-  hasModelAccess, 
-  getPlanName, 
-  getFeatureLimit, 
+import {
+  hasAccess as checkAccess,
+  hasModelAccess,
+  getPlanName,
+  getFeatureLimit,
   formatStorageSize,
   getNextPlan,
   PlanType
@@ -68,7 +68,7 @@ export type AuthContextType = {
   usageStats: UsageStats | null;
   availablePlans: SubscriptionPlan[];
   signIn: (email: string, password: string) => Promise<{ data?: any; error?: any }>;
-  signUp: (email: string, password: string, username?: string) => Promise<{ user?: any; error?: any }>;
+  signUp: (email: string, password: string) => Promise<{ user?: any; error?: any }>;
   signOut: () => Promise<void>;
   updateProfile: (updates: Partial<Profile>) => Promise<{ error: any | null }>;
   resetPassword: (email: string) => Promise<{ error: any | null }>;
@@ -92,15 +92,16 @@ export type AuthContextType = {
   createStripeCustomer: (email: string, name?: string) => Promise<string>;
   createPaypalCustomer: (email: string, name?: string) => Promise<{ id: string } | undefined>;
   redirectToPaypal: (customerId: string) => Promise<string | undefined>;
+  insertContactSubmission: (data: { name: string; email: string; company: string; phone: string; service_interest: string[]; message: string; budget: string; timeframe: string; }) => Promise<{ error: any | null }>;
 };
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 async function getPayPalAccessToken(): Promise<string> {
   try {
-    const PAYPAL_API_URL = import.meta.env.VITE_PAYPAL_API_URL || 'https://api-m.sandbox.paypal.com';
-    const PAYPAL_CLIENT_ID = import.meta.env.VITE_PAYPAL_CLIENT_ID;
-    const PAYPAL_SECRET = import.meta.env.VITE_PAYPAL_CLIENT_SECRET;
+    const PAYPAL_API_URL = (import.meta as any).env.VITE_PAYPAL_API_URL || 'https://api-m.paypal.com';
+    const PAYPAL_CLIENT_ID = (import.meta as any).env.VITE_PAYPAL_CLIENT_ID;
+    const PAYPAL_SECRET = (import.meta as any).env.VITE_PAYPAL_CLIENT_SECRET;
 
     if (!PAYPAL_CLIENT_ID || !PAYPAL_SECRET) {
       throw new Error('PayPal client ID or secret not found in environment variables');
@@ -157,15 +158,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     async function getInitialSession() {
       setIsLoading(true);
-      
+
       // Comprobar si hay una sesión activa
       const { data: sessionData } = await supabase.auth.getSession();
-      
+
       if (sessionData?.session?.user) {
         setUser(sessionData.session.user);
         await loadUserData(sessionData.session.user.id);
       }
-      
+
       // Suscribirse a cambios de autenticación
       const { data: authListener } = supabase.auth.onAuthStateChange(async (event, session) => {
         if (event === 'SIGNED_IN' && session?.user) {
@@ -179,20 +180,20 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           setStripeCustomerId(null);
         }
       });
-      
+
       // Cargar planes disponibles
       // await loadAvailablePlans();
-      
+
       setIsLoading(false);
-      
+
       return () => {
         authListener.subscription.unsubscribe();
       };
     }
-    
+
     getInitialSession();
   }, []);
-  
+
   // Cargar datos del usuario (perfil, suscripción, uso)
   async function loadUserData(userId: string) {
     try {
@@ -202,18 +203,18 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         .select('*')
         .eq('id', userId)
         .single();
-      
+
       if (profileError) {
         console.error('Error cargando el perfil:', profileError);
       } else {
         setProfile(profileData);
-        
+
         // Load Stripe customer ID if it exists
         if (profileData?.stripe_customer_id) {
           setStripeCustomerId(profileData.stripe_customer_id);
         }
       }
-      
+
       // Cargar suscripción
       const { data: subscriptionData, error: subscriptionError } = await supabase
         .from('subscriptions')
@@ -223,7 +224,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         .order('created_at', { ascending: false })
         .limit(1)
         .single();
-      
+
       if (subscriptionError && subscriptionError.code !== 'PGRST116') {
         console.error('Error cargando la suscripción:', subscriptionError);
       } else if (subscriptionData) {
@@ -240,21 +241,21 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           })
           .select()
           .single();
-          
+
         if (createSubError) {
           console.error('Error creando suscripción por defecto:', createSubError);
         } else {
           setUserSubscription(newSubscription);
         }
       }
-      
+
       // Cargar estadísticas de uso
       // const { data: usageData, error: usageError } = await supabase
       //   .from('usage_stats')
       //   .select('*')
       //   .eq('user_id', userId)
       //   .single();
-      
+
       // if (usageError && usageError.code !== 'PGRST116') {
       //   console.error('Error cargando estadísticas de uso:', usageError);
       // } else if (usageData) {
@@ -271,7 +272,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       //     })
       //     .select()
       //     .single();
-          
+
       //   if (createUsageError) {
       //     console.error('Error creando estadísticas de uso:', createUsageError);
       //   } else {
@@ -282,7 +283,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       console.error('Error cargando datos de usuario:', error);
     }
   }
-  
+
   // Cargar planes disponibles
   // async function loadAvailablePlans() {
   //   try {
@@ -290,7 +291,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   //       .from('subscription_plans')
   //       .select('*')
   //       // .order('price_monthly', { ascending: true });
-        
+
   //     if (error) {
   //       console.error('Error cargando planes:', error);
   //     } else {
@@ -300,7 +301,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   //     console.error('Error cargando planes disponibles:', error);
   //   }
   // }
-  
+
   // Iniciar sesión
   async function signIn(email: string, password: string) {
     try {
@@ -308,7 +309,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         email,
         password
       });
-      
+
       if (error) return { error };
       return { data };
     } catch (error) {
@@ -316,7 +317,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       return { error };
     }
   }
-  
+
   // Cerrar sesión
   async function signOut() {
     try {
@@ -326,54 +327,71 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       throw error;
     }
   }
-  
+
   // Registrarse
-  async function signUp(email: string, password: string, username?: string) {
+  async function signUp(email: string, password: string) {
     try {
+      // Verificar si el usuario ya existe
+      const { data: existingUser } = await supabase
+        .from('users')
+        .select('id')
+        .eq('email', email)
+        .single();
+
+      if (existingUser) {
+        return { error: new Error('El usuario ya existe') };
+      }
+
+      // Crear nuevo usuario en auth
       const { data, error } = await supabase.auth.signUp({
         email,
         password,
       });
-      
+
       if (error) return { error };
-      
+
       if (data?.user) {
-        // Create profile with username if provided
-        // if (username) {
-        //   const { error: profileError } = await supabase
-        //     .from('profiles')
-        //     .update({ username })
-        //     .eq('id', data.user.id);
-            
-        //   if (profileError) {
-        //     console.error('Error updating profile with username:', profileError);
-        //   }
-        // }
-        
-        return { user: data.user };
+        // Insertar en la tabla users
+        const { error: profileError } = await supabase
+          .from('users')
+          .insert({
+            id: data.user.id,
+            email: email,
+            website: 'developerjeremylive'
+          });
+
+        if (profileError) {
+          console.error('Error al crear el perfil:', profileError);
+          if (profileError.code === '23505') {
+            return { error: new Error('El usuario ya existe en el sistema') };
+          }
+          return { error: new Error('Error al crear el perfil de usuario') };
+        }
+
+        return { data };
       }
-      
-      return { error: new Error('Registration failed') };
+
+      return { error: new Error('Error en el registro') };
     } catch (error) {
       console.error('Error durante el registro:', error);
       return { error };
     }
   }
-  
+
   // Actualizar perfil del usuario
   async function updateProfile(updates: Partial<Profile>) {
     if (!user) throw new Error('No authenticated user');
-    
+
     try {
       const authUpdates: any = {};
       const profileUpdates: any = {};
-  
+
       // Only include email in auth update if it's changed
       if (updates.email) {
         authUpdates.email = updates.email;
         profileUpdates.email = updates.email;
       }
-  
+
       // Only include username in user metadata if it's changed
       if (updates.username) {
         if (!authUpdates.data) authUpdates.data = {};
@@ -385,31 +403,31 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         if (!authUpdates.data) authUpdates.data = {};
         authUpdates.data.display_name = updates.display_name;
       }
-  
+
       // Only include avatar_url in user metadata if it's changed
       if (updates.avatar_url) {
         if (!authUpdates.data) authUpdates.data = {};
         authUpdates.data.avatar_url = updates.avatar_url;
         profileUpdates.avatar_url = updates.avatar_url;
       }
-  
+
       // Update auth user if there are auth-related changes
       if (Object.keys(authUpdates).length > 0) {
         const { data: authData, error: authError } = await supabase.auth.updateUser(authUpdates);
         if (authError) throw authError;
       }
-  
+
       // Always include updated_at in profile updates
       profileUpdates.updated_at = new Date().toISOString();
-  
+
       // Update profile in database
       // const { error: profileError } = await supabase
       //   .from('profiles')
       //   .update(profileUpdates)
       //   .eq('id', user.id);
-        
+
       // if (profileError) throw profileError;
-      
+
       // Update profile in state
       if (profile) {
         setProfile({
@@ -417,7 +435,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           ...profileUpdates
         });
       }
-      
+
       // Update Stripe customer if name was changed
       // if (stripeCustomerId && updates.display_name) {
       //   try {
@@ -428,18 +446,18 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       //     console.error('Error updating Stripe customer:', stripeError);
       //   }
       // }
-      
+
       return { error: null };
     } catch (error) {
       console.error('Error updating profile:', error);
       return { error };
     }
   }
-  
+
   // Actualizar suscripción con Stripe integration
   async function updateSubscription(planId: string) {
     if (!user) throw new Error('Usuario no autenticado');
-    
+
     try {
       // Redirect to Stripe Checkout for payment
       await redirectToCheckout(planId);
@@ -448,26 +466,26 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       throw error;
     }
   }
-  
+
   // Refresh subscription data from Stripe and update local state
   // async function refreshSubscriptionData() {
   //   if (!user || !stripeCustomerId) return;
-    
+
   //   try {
   //     // Get subscription from Stripe
   //     const subscriptions = await stripeService.getCustomerSubscriptions(stripeCustomerId);
-      
+
   //     if (subscriptions && subscriptions.data && subscriptions.data.length > 0) {
   //       // Get the most recent active subscription
   //       const activeSubscription = subscriptions.data.find(sub => 
   //         sub.status === 'active' || sub.status === 'trialing' || sub.status === 'past_due'
   //       );
-        
+
   //       if (activeSubscription) {
   //         // Get plan ID from price ID
   //         const priceId = activeSubscription.items.data[0]?.price.id;
   //         const planId = PRICE_TO_PLAN_MAP[priceId] || PLAN_IDS.FREE;
-          
+
   //         // Update Supabase subscription record
   //         const { error } = await supabase
   //           .from('subscriptions')
@@ -487,7 +505,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   //           }, {
   //             onConflict: 'subscription_id'
   //           });
-            
+
   //         if (error) {
   //           console.error('Error updating subscription in database:', error);
   //         } else {
@@ -504,7 +522,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   //             updated_at: new Date().toISOString()
   //           })
   //           .eq('subscription_id', userSubscription.subscription_id);
-            
+
   //         if (error) {
   //           console.error('Error marking subscription as canceled:', error);
   //         } else {
@@ -522,7 +540,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   //           updated_at: new Date().toISOString()
   //         })
   //         .eq('subscription_id', userSubscription.subscription_id);
-          
+
   //       if (error) {
   //         console.error('Error marking subscription as canceled:', error);
   //       } else {
@@ -534,19 +552,19 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   //     console.error('Error refreshing subscription data:', error);
   //   }
   // }
-  
+
   // Cancelar suscripción
   async function cancelSubscription() {
     if (!user || !userSubscription || !userSubscription.subscription_id) {
       throw new Error('No active subscription to cancel');
     }
-    
+
     try {
       // Cancel subscription in Stripe
       if (userSubscription.subscription_id) {
         await stripeService.cancelSubscription(userSubscription.subscription_id);
       }
-      
+
       // Update subscription in database
       const { error } = await supabase
         .from('subscriptions')
@@ -556,9 +574,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           updated_at: new Date().toISOString()
         })
         .eq('id', userSubscription.id);
-        
+
       if (error) throw error;
-      
+
       // Recargar datos de suscripción
       await loadUserData(user.id);
     } catch (error) {
@@ -566,25 +584,25 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       throw error;
     }
   }
-  
+
   // Incrementar el contador de uso de API
   async function incrementApiUsage() {
     if (!user || !usageStats) return;
-    
+
     try {
       const newCount = (usageStats.api_calls || 0) + 1;
-      
+
       const { error } = await supabase
         .from('usage_stats')
-        .update({ 
+        .update({
           api_calls: newCount,
           last_active: new Date().toISOString(),
           updated_at: new Date().toISOString()
         })
         .eq('id', usageStats.id);
-        
+
       if (error) throw error;
-      
+
       // Actualizar estado local
       setUsageStats({
         ...usageStats,
@@ -596,25 +614,25 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       console.error('Error incrementando uso de API:', error);
     }
   }
-  
+
   // Agregar uso de almacenamiento
   async function addStorageUsage(bytesAdded: number) {
     if (!user || !usageStats) return;
-    
+
     try {
       const newStorage = (usageStats.storage_used || 0) + bytesAdded;
-      
+
       const { error } = await supabase
         .from('usage_stats')
-        .update({ 
+        .update({
           storage_used: newStorage,
           last_active: new Date().toISOString(),
           updated_at: new Date().toISOString()
         })
         .eq('id', usageStats.id);
-        
+
       if (error) throw error;
-      
+
       // Actualizar estado local
       setUsageStats({
         ...usageStats,
@@ -626,21 +644,21 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       console.error('Error actualizando uso de almacenamiento:', error);
     }
   }
-  
+
   // Verificar si el usuario tiene acceso a funcionalidades premium
   function hasAccess(requiredPlanId: string): boolean {
     if (!userSubscription) return requiredPlanId === '1'; // Only allow free features
-    
+
     return checkAccess(userSubscription.plan_id, requiredPlanId);
   }
-  
+
   // Verificar si el usuario tiene acceso a un modelo específico
   function hasModelAccess(modelId: string): boolean {
     if (!userSubscription) return false;
-    
+
     return hasModelAccess(modelId);
   }
-  
+
   // Refrescar datos de suscripción
   async function refreshSubscriptionData() {
     if (!user) return;
@@ -650,18 +668,18 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   // Redirect to Stripe Checkout
   async function redirectToCheckout(planId: string) {
     if (!user) throw new Error('User not authenticated');
-    
+
     try {
       // Get the price ID for the selected plan
       const priceId = PLAN_TO_PRICE_MAP[planId];
-      
+
       if (!priceId) {
         throw new Error('Invalid plan ID');
       }
-      
+
       // Create or get Stripe customer
       let customerId = stripeCustomerId;
-      
+
       if (!customerId && profile) {
         // Create a new customer in Stripe
         const customerResponse = await stripeService.createCustomer({
@@ -671,16 +689,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             user_id: user.id
           }
         });
-        
+
         if (customerResponse && customerResponse.id) {
           customerId = customerResponse.id;
-          
+
           // Update profile with Stripe customer ID
           const { error } = await supabase
             .from('users')
             .update({ stripe_customer_id: customerId })
             .eq('id', user.id);
-            
+
           if (error) {
             console.error('Error updating profile with Stripe customer ID:', error);
           } else {
@@ -688,11 +706,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           }
         }
       }
-      
+
       if (!customerId) {
         throw new Error('Could not create or retrieve Stripe customer');
       }
-      
+
       // Create checkout session and redirect
       const session = await stripeService.createCheckoutSession({
         customerId,
@@ -700,7 +718,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         successUrl: `${window.location.origin}/subscription-success?session_id={CHECKOUT_SESSION_ID}`,
         cancelUrl: `${window.location.origin}/pricing`
       });
-      
+
       if (session && session.url) {
         window.location.href = session.url;
       } else {
@@ -711,24 +729,24 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       throw error;
     }
   }
-  
+
   // Redirect to Stripe Customer Portal
   async function redirectToCustomerPortal(customerId: string): Promise<{ url: string }> {
     if (!user) {
       throw new Error('User not authenticated');
     }
-    
+
     try {
       if (!customerId) {
         throw new Error('Customer ID is required');
       }
-      
+
       // Create customer portal session and return URL
       const session = await stripeService.createCustomerPortalSession({
         customerId,
         returnUrl: `${window.location.origin}/subscription`
       });
-      
+
       if (session && session.url) {
         return { url: session.url };
       } else {
@@ -746,12 +764,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
         redirectTo: `${window.location.origin}/reset-password`
       });
-      
+
       if (error) {
         console.error('Error resetting password:', error);
         throw error;
       }
-      
+
       return { error: null, data };
     } catch (error) {
       console.error('Error resetting password:', error);
@@ -786,7 +804,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           supabase_user_id: user?.id || ''
         }
       });
-      
+
       // Check if user exists in public.users table before creating
       if (user) {
         const { data: existingUser, error: checkError } = await supabase
@@ -808,22 +826,23 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
               id: user.id,
               username: name,
               email: email,
-              stripe_customer_id: customer.id
+              stripe_customer_id: customer.id,
+              website: 'developerjeremylive'
             });
-        
-        if (error) {
-          console.error('Error creating user record:', error);
-          throw error;
-        }
 
-        // Update local user state only after successful creation
-        setStripeCustomerId(customer.id);
-      } else {
-        // If user already exists, just update the local state
-        setStripeCustomerId(customer.id);
+          if (error) {
+            console.error('Error creating user record:', error);
+            throw error;
+          }
+
+          // Update local user state only after successful creation
+          setStripeCustomerId(customer.id);
+        } else {
+          // If user already exists, just update the local state
+          setStripeCustomerId(customer.id);
+        }
       }
-    }
-      
+
       return customer.id;
     } catch (error: any) {
       console.error('Error creating Stripe customer:', error);
@@ -834,9 +853,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   // Get PayPal access token
   async function getPayPalAccessToken(): Promise<string> {
     try {
-      const clientId = import.meta.env.VITE_PAYPAL_CLIENT_ID;
-      const clientSecret = import.meta.env.VITE_PAYPAL_CLIENT_SECRET;
-      const apiUrl = import.meta.env.VITE_PAYPAL_API_URL;
+      const clientId = (import.meta as any).env.VITE_PAYPAL_CLIENT_ID;
+      const clientSecret = (import.meta as any).env.VITE_PAYPAL_CLIENT_SECRET;
+      const apiUrl = (import.meta as any).env.VITE_PAYPAL_API_URL;
 
       if (!clientId || !clientSecret) {
         throw new Error('PayPal credentials are not properly configured');
@@ -875,10 +894,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   }
 
- async function createPaypalCustomer(email: string, name?: string): Promise<{ id: string } | undefined> {
+  async function createPaypalCustomer(email: string, name?: string): Promise<{ id: string } | undefined> {
     try {
       const accessToken = await getPayPalAccessToken();
-      const PAYPAL_API_URL = import.meta.env.VITE_PAYPAL_API_URL || 'https://api-m.sandbox.paypal.com';
+      const PAYPAL_API_URL = (import.meta as any).env.VITE_PAYPAL_API_URL || 'https://api-m.paypal.com';
 
       // Create a subscription directly instead of creating a customer
       const response = await fetch(`${PAYPAL_API_URL}/v1/billing/subscriptions`, {
@@ -889,7 +908,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           'Prefer': 'return=representation'
         },
         body: JSON.stringify({
-          plan_id: import.meta.env.VITE_PAYPAL_PLAN_ID || 'P-5ML4271532192UIU2',
+          plan_id: (import.meta as any).env.VITE_PAYPAL_PLAN_ID || 'P-5ML4271532192UIU2',
           start_time: new Date(Date.now() + 5 * 60 * 1000).toISOString(),
           quantity: "1",
           application_context: {
@@ -932,10 +951,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   }
 
- async function redirectToPaypal(customerId: string): Promise<string | undefined> {
+  async function redirectToPaypal(customerId: string): Promise<string | undefined> {
     try {
       const accessToken = await getPayPalAccessToken();
-      const PAYPAL_API_URL = import.meta.env.VITE_PAYPAL_API_URL || 'https://api-m.sandbox.paypal.com';
+      const PAYPAL_API_URL = (import.meta as any).env.VITE_PAYPAL_API_URL || 'https://api-m.paypal.com';
 
       const response = await fetch(`${PAYPAL_API_URL}/v1/billing/subscriptions`, {
         method: 'POST',
@@ -985,7 +1004,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
       const data = await response.json();
       const approveLink = data.links?.find((link: any) => link.rel === 'approve')?.href;
-      
+
       if (!approveLink) {
         throw new Error('PayPal approval URL not found');
       }
@@ -996,6 +1015,28 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       throw error;
     }
   }
+
+  const insertContactSubmission = async (data: { name: string; email: string; company: string; phone: string; service_interest: string[]; message: string; budget: string; timeframe: string; }) => {
+    try {
+      const { error } = await supabase
+        .from('contact_submissions')
+        .insert([{
+          name: data.name,
+          email: data.email,
+          company: data.company,
+          phone: data.phone,
+          service_interest: data.service_interest,
+          budget: data.budget,
+          timeframe: data.timeframe,
+          message: data.message,
+          user_id: user?.id
+        }]);
+      return { error };
+    } catch (error) {
+      console.error('Error inserting contact submission:', error);
+      return { error };
+    }
+  };
 
   const value = {
     user,
@@ -1028,7 +1069,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setIsLoginOpen,
     createStripeCustomer,
     createPaypalCustomer,
-    redirectToPaypal
+    redirectToPaypal,
+    insertContactSubmission
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

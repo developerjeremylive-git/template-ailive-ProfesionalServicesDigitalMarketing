@@ -9,96 +9,96 @@ const testimonials = [
 	{
 		id: 1,
 		nameKey: 'Ana Martínez',
-		roleKey: 'Directora de Marketing Digital',
+		roleKey: 'CTO',
 		company: 'E-commerce Express',
 		image: '/avatars/sarah.jpg',
 		rating: 5,
-		textKey: 'Implementamos una estrategia integral de SEO que transformó nuestra presencia online. La optimización del contenido. El análisis detallado y las mejoras continuas fueron clave para nuestro éxito.',
-		dashboardType: 'analytics',
+		textKey: 'La implementación de nuestra plataforma e-commerce con arquitectura moderna y optimizada ha transformado completamente nuestro negocio digital. El rendimiento excepcional y la escalabilidad nos permitieron manejar picos de tráfico sin problemas.',
+		dashboardType: 'web',
 		metrics: {
-			conversionRate: '+180%',
-			organicTraffic: '+250%',
-			salesGrowth: '+300%',
+			performance: '98%',
+			loadTime: '0.8s',
+			seoScore: '95/100',
 		},
 		iconColor: 'bg-purple-500',
 	},
 	{
 		id: 2,
 		nameKey: 'Carlos Rodríguez',
-		roleKey: 'Gerente de Redes Sociales',
-		company: 'ModaStyle',
+		roleKey: 'Director de Tecnología',
+		company: 'FinTech Solutions',
 		image: '/avatars/michael.jpg',
 		rating: 5,
-		textKey: 'La estrategia de contenido y engagement en redes sociales revolucionó nuestra marca. Logramos crear una comunidad activa y comprometida, aumentando significativamente nuestras conversiones sociales. La analítica detallada nos permitió optimizar cada campaña para maximizar el ROI.',
-		dashboardType: 'models',
+		textKey: 'El desarrollo de nuestro software de gestión financiera a medida revolucionó nuestros procesos internos. La automatización y la integración perfecta con nuestros sistemas existentes aumentaron significativamente nuestra eficiencia operativa.',
+		dashboardType: 'software',
 		metrics: {
-			socialGrowth: '+200%',
-			engagement: '+150%',
-			socialROI: '+180%',
+			efficiency: '+180%',
+			automation: '95%',
+			processTime: '-65%',
 		},
 		iconColor: 'bg-blue-500',
 	},
 	{
 		id: 3,
 		nameKey: 'Laura Sánchez',
-		roleKey: 'Especialista en Marketing Digital',
+		roleKey: 'DevOps Manager',
 		company: 'TechServices Pro',
 		image: '/avatars/emily.jpg',
 		rating: 5,
-		textKey: 'La implementación de estrategias de email marketing y automatización transformó nuestra generación de leads. Optimizamos cada etapa del embudo de conversión, mejorando significativamente la calidad de los leads y la retención de clientes.',
-		dashboardType: 'performance',
+		textKey: 'La migración a la nube y la implementación de una arquitectura serverless transformó nuestra infraestructura. La escalabilidad automática y la reducción de costos operativos superaron nuestras expectativas.',
+		dashboardType: 'cloud',
 		metrics: {
-			leadGeneration: '+220%',
-			emailConversion: '+150%',
-			clientRetention: '+85%',
+			uptime: '99.99%',
+			costReduction: '-40%',
+			scalability: '∞',
 		},
 		iconColor: 'bg-green-500',
 	},
 	{
 		id: 4,
 		nameKey: 'Miguel Torres',
-		roleKey: 'Director de SEO',
+		roleKey: 'Product Manager',
 		company: 'Global Solutions',
 		image: '/avatars/david.jpg',
 		rating: 5,
-		textKey: 'Nuestra estrategia de SEO técnico y contenido optimizado nos llevó a las primeras posiciones en búsquedas competitivas. El tráfico orgánico cualificado se multiplicó, resultando en un ROI excepcional para nuestras campañas de marketing digital.',
-		dashboardType: 'analytics',
+		textKey: 'El desarrollo de nuestra aplicación móvil empresarial mejoró significativamente la productividad de nuestro equipo en campo. La sincronización en tiempo real y la interfaz intuitiva fueron clave para su adopción masiva.',
+		dashboardType: 'mobile',
 		metrics: {
-			seoRanking: 'Top 3',
-			webTraffic: '+280%',
-			roi: '+320%',
+			userAdoption: '95%',
+			syncSpeed: '0.3s',
+			productivity: '+150%',
 		},
 		iconColor: 'bg-indigo-500',
 	},
 	{
 		id: 5,
 		nameKey: 'Patricia López',
-		roleKey: 'Gerente de Marketing Digital',
-		company: 'Retail Plus',
+		roleKey: 'AI Project Lead',
+		company: 'Innovation Labs',
 		image: '/avatars/lisa.jpg',
 		rating: 5,
-		textKey: 'La optimización de nuestras campañas PPC y la implementación de estrategias de remarketing redujeron significativamente nuestro costo por adquisición. El análisis detallado de datos nos permitió maximizar el ROI de cada campaña.',
-		dashboardType: 'performance',
+		textKey: 'La implementación de soluciones de IA para automatización de procesos y análisis predictivo ha revolucionado nuestra toma de decisiones. Los modelos personalizados superaron significativamente las soluciones genéricas del mercado.',
+		dashboardType: 'ai',
 		metrics: {
-			ppcConversion: '+175%',
-			costPerLead: '-45%',
-			campaignROI: '+250%',
+			accuracy: '98.5%',
+			prediction: '94%',
+			efficiency: '+200%',
 		},
 		iconColor: 'bg-pink-500',
 	},
 	{
 		id: 6,
 		nameKey: 'Roberto Gómez',
-		roleKey: 'Director de Growth Marketing',
-		company: 'StartUp Hub',
+		roleKey: 'CEO',
+		company: 'SaaS Platform',
 		image: '/avatars/alex.jpg',
 		rating: 5,
-		textKey: 'La implementación de una estrategia omnicanal nos permitió expandir significativamente nuestro alcance de mercado. La optimización continua basada en datos mejoró la calidad de nuestros leads y aceleró nuestro crecimiento de manera sostenible.',
-		dashboardType: 'models',
+		textKey: 'El desarrollo de nuestra plataforma SaaS nos permitió escalar globalmente sin problemas. La arquitectura multitenancy y el sistema de microservicios proporcionaron la flexibilidad necesaria para nuestro crecimiento exponencial.',
+		dashboardType: 'saas',
 		metrics: {
-			marketReach: '+400%',
-			leadQuality: '+200%',
-			growthRate: '+150%',
+			scalability: '+400%',
+			responseTime: '0.2s',
+			availability: '99.99%',
 		},
 		iconColor: 'bg-yellow-500',
 	}
@@ -112,7 +112,7 @@ export default function TestimonialsSection() {
 
 	const nextTestimonial = () => {
 		const nextIndex = (currentIndex + 1) % testimonials.length
-		
+
 		// Si quedarían menos de 3 cartas visibles
 		if (testimonials.length - nextIndex < 3) {
 			// Reiniciar al principio
@@ -138,7 +138,7 @@ export default function TestimonialsSection() {
 			setCurrentIndex((prev) => {
 				// Calculamos el siguiente índice
 				const nextIndex = (prev + 1) % testimonials.length
-				
+
 				// Si quedan menos de 3 cartas por mostrar al final
 				if (testimonials.length - nextIndex < 3) {
 					// Volvemos al inicio suavemente
@@ -147,7 +147,7 @@ export default function TestimonialsSection() {
 					}, 700)
 					return prev
 				}
-				
+
 				return nextIndex
 			})
 		}, 5000)
@@ -161,10 +161,10 @@ export default function TestimonialsSection() {
 				{/* Section Header */}
 				<div className="text-center mb-16">
 					<h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-						Resultados Excepcionales para su Negocio
+						Excelencia en Desarrollo de Software
 					</h2>
 					<p className="text-violet-200 text-lg max-w-2xl mx-auto">
-						Transformamos empresas con estrategias digitales personalizadas y resultados medibles
+						Entregamos soluciones tecnológicas de alto impacto con resultados medibles y ROI garantizado
 					</p>
 				</div>
 
@@ -172,32 +172,47 @@ export default function TestimonialsSection() {
 				<div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto mb-16">
 					<div className={`${isDarkTheme ? 'bg-gray-800' : 'bg-white'} bg-opacity-5 backdrop-blur-sm rounded-xl p-6 text-center`}>
 						<div className="text-3xl font-bold text-white mb-2">
-							+300% ROI
+							99.99%
 						</div>
 						<div className="text-violet-200">
-							Retorno de Inversión Garantizado para Maximizar su Presupuesto
+							Disponibilidad Garantizada en Nuestras Soluciones Cloud
 						</div>
 					</div>
 					<div className={`${isDarkTheme ? 'bg-gray-800' : 'bg-white'} bg-opacity-5 backdrop-blur-sm rounded-xl p-6 text-center`}>
 						<div className="text-3xl font-bold text-white mb-2">
-							+200% Leads
+							-60%
 						</div>
 						<div className="text-violet-200">
-							Generación de Leads Cualificados que Impulsan sus Ventas
+							Reducción en Costos Operativos con Automatización
 						</div>
 					</div>
 					<div className={`${isDarkTheme ? 'bg-gray-800' : 'bg-white'} bg-opacity-5 backdrop-blur-sm rounded-xl p-6 text-center`}>
 						<div className="text-3xl font-bold text-white mb-2">
-							Top 10 SEO
+							1s
 						</div>
 						<div className="text-violet-200">
-							Posicionamiento Garantizado en los Primeros Resultados de Búsqueda
+							Tiempo de Respuesta en Aplicaciones Optimizadas
 						</div>
 					</div>
 				</div>
 
 				{/* Testimonials Carousel */}
 				<div className="relative max-w-7xl mx-auto mb-32 px-12">
+					{/* Scroll Indicator */}
+					<div className="flex justify-center mb-8 gap-1">
+						{testimonials.map((_, index) => (
+							<motion.div
+								key={index}
+								className="h-1 w-8 rounded-full bg-purple-500"
+								initial={{ opacity: 0.3 }}
+								animate={{
+									opacity: Math.abs(currentIndex - index) < 3 ? 1 : 0.3,
+									backgroundColor: Math.abs(currentIndex - index) < 3 ? '#8B5CF6' : '#4B5563'
+								}}
+								transition={{ duration: 0.5 }}
+							/>
+						))}
+					</div>
 					<div className="overflow-hidden">
 						<motion.div
 							className="flex"
@@ -222,9 +237,8 @@ export default function TestimonialsSection() {
 								>
 									<div
 										onClick={() => setSelectedTestimonial(testimonial)}
-										className={`${
-											isDarkTheme ? 'bg-gray-800' : 'bg-white'
-										} bg-opacity-5 backdrop-blur-sm rounded-2xl p-8 cursor-pointer transform transition-all duration-300 hover:scale-105 hover:bg-opacity-10 h-[32rem] flex flex-col`}
+										className={`${isDarkTheme ? 'bg-gray-800' : 'bg-white'
+											} bg-opacity-5 backdrop-blur-sm rounded-2xl p-8 cursor-pointer transform transition-all duration-300 hover:scale-105 hover:bg-opacity-10 h-[32rem] flex flex-col`}
 									>
 										<div className="flex items-center mb-6">
 											<div className="relative">
@@ -263,24 +277,34 @@ export default function TestimonialsSection() {
 														{value}
 													</div>
 													<div className="text-violet-200 text-xs">
-														{key === 'conversionRate' && 'Tasa de Conversión'}
-														{key === 'organicTraffic' && 'Tráfico Orgánico'}
-														{key === 'salesGrowth' && 'Crecimiento en Ventas'}
-														{key === 'socialGrowth' && 'Crecimiento Social'}
-														{key === 'engagement' && 'Interacción'}
-														{key === 'socialROI' && 'ROI Social'}
-														{key === 'leadGeneration' && 'Generación de Leads'}
-														{key === 'emailConversion' && 'Conversión de Email'}
-														{key === 'clientRetention' && 'Retención de Clientes'}
-														{key === 'seoRanking' && 'Ranking SEO'}
-														{key === 'webTraffic' && 'Tráfico Web'}
-														{key === 'roi' && 'ROI'}
-														{key === 'ppcConversion' && 'Conversión PPC'}
-														{key === 'costPerLead' && 'Costo por Lead'}
-														{key === 'campaignROI' && 'ROI de Campaña'}
-														{key === 'marketReach' && 'Alcance de Mercado'}
-														{key === 'leadQuality' && 'Calidad de Leads'}
-														{key === 'growthRate' && 'Tasa de Crecimiento'}
+														{key === 'userAdoption' && 'Adopción de Usuarios'}
+														{key === 'syncSpeed' && 'Velocidad de Sincronización'}
+														{key === 'productivity' && 'Productividad'}
+														{key === 'uptime' && 'Tiempo de Actividad'}
+														{key === 'costReduction' && 'Reducción de Costos'}
+														{key === 'scalability' && 'Escalabilidad'}
+														{key === 'accuracy' && 'Precisión'}
+														{key === 'prediction' && 'Predicción'}
+														{key === 'efficiency' && 'Eficiencia'}
+														{key === 'automation' && 'Automatización'}
+														{key === 'processTime' && 'Tiempo de Proceso'}
+														{key === 'performance' && 'Rendimiento'}
+														{key === 'reliability' && 'Fiabilidad'}
+														{key === 'security' && 'Seguridad'}
+														{key === 'maintenance' && 'Mantenimiento'}
+														{key === 'support' && 'Soporte'}
+														{key === 'training' && 'Capacitación'}
+														{key === 'responseTime' && 'Tiempo de Respuesta'}
+														{key === 'cost' && 'Costo'}
+														{key === 'availability' && 'Disponibilidad'}
+														{key === 'modelsDeployed' && 'Modelos Desplegados'}
+														{key === 'dataSources' && 'Fuentes de Datos'}
+														{key === 'integrations' && 'Integraciones'}
+														{key === 'customization' && 'Personalización'}
+														{key === 'userExperience' && 'Experiencia de Usuario'}
+														{key === 'teamSize' && 'Tamaño del Equipo'}
+														{key === 'loadTime' && 'Tiempo de Carga'}
+														{key === 'seoScore' && 'Puntuación SEO'}
 													</div>
 												</div>
 											))}
@@ -322,9 +346,8 @@ export default function TestimonialsSection() {
 							initial={{ scale: 0.9, opacity: 0 }}
 							animate={{ scale: 1, opacity: 1 }}
 							exit={{ scale: 0.9, opacity: 0 }}
-							className={`${
-								isDarkTheme ? 'bg-gray-900' : 'bg-gradient-to-br from-purple-900 to-violet-800'
-							} rounded-2xl p-8 max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-purple-500/20`}
+							className={`${isDarkTheme ? 'bg-gray-900' : 'bg-gradient-to-br from-purple-900 to-violet-800'
+								} rounded-2xl p-8 max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-purple-500/20`}
 							onClick={(e) => e.stopPropagation()}
 						>
 							<div className="flex items-center justify-between mb-8 border-b border-purple-500/20 pb-6">
@@ -374,24 +397,28 @@ export default function TestimonialsSection() {
 													{value}
 												</div>
 												<div className="text-violet-200">
-													{key === 'conversionRate' && 'Tasa de Conversión'}
-													{key === 'organicTraffic' && 'Tráfico Orgánico'}
-													{key === 'salesGrowth' && 'Crecimiento en Ventas'}
-													{key === 'socialGrowth' && 'Crecimiento Social'}
-													{key === 'engagement' && 'Interacción'}
-													{key === 'socialROI' && 'ROI Social'}
-													{key === 'leadGeneration' && 'Generación de Leads'}
-													{key === 'emailConversion' && 'Conversión de Email'}
-													{key === 'clientRetention' && 'Retención de Clientes'}
-													{key === 'seoRanking' && 'Ranking SEO'}
-													{key === 'webTraffic' && 'Tráfico Web'}
-													{key === 'roi' && 'ROI'}
-													{key === 'ppcConversion' && 'Conversión PPC'}
-													{key === 'costPerLead' && 'Costo por Lead'}
-													{key === 'campaignROI' && 'ROI de Campaña'}
-													{key === 'marketReach' && 'Alcance de Mercado'}
-													{key === 'leadQuality' && 'Calidad de Leads'}
-													{key === 'growthRate' && 'Tasa de Crecimiento'}
+													{key === 'userAdoption' && 'Adopción de Usuarios'}
+													{key === 'syncSpeed' && 'Velocidad de Sincronización'}
+													{key === 'productivity' && 'Productividad'}
+													{key === 'uptime' && 'Tiempo de Actividad'}
+													{key === 'costReduction' && 'Reducción de Costos'}
+													{key === 'scalability' && 'Escalabilidad'}
+													{key === 'accuracy' && 'Precisión'}
+													{key === 'prediction' && 'Predicción'}
+													{key === 'efficiency' && 'Eficiencia'}
+													{key === 'automation' && 'Automatización'}
+													{key === 'processTime' && 'Tiempo de Proceso'}
+													{key === 'performance' && 'Rendimiento'}
+													{key === 'reliability' && 'Fiabilidad'}
+													{key === 'security' && 'Seguridad'}
+													{key === 'maintenance' && 'Mantenimiento'}
+													{key === 'support' && 'Soporte'}
+													{key === 'training' && 'Capacitación'}
+													{key === 'responseTime' && 'Tiempo de Respuesta'}
+													{key === 'cost' && 'Costo'}
+													{key === 'availability' && 'Disponibilidad'}
+													{key === 'loadTime' && 'Tiempo de Carga'}
+													{key === 'seoScore' && 'Puntuación SEO'}
 												</div>
 											</div>
 										)

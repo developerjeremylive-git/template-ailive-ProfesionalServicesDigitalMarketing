@@ -5,7 +5,7 @@ import { useLanguage } from '../context/LanguageContext'
 import { useApp } from '../context/AppContext';
 
 interface DashboardPreviewProps {
-	type: 'analytics' | 'performance' | 'marketing' | 'lead'
+	type: 'web' | 'software' | 'cloud' | 'ai'
 }
 
 export default function DashboardPreview({ type: initialType }: DashboardPreviewProps) {
@@ -16,10 +16,10 @@ export default function DashboardPreview({ type: initialType }: DashboardPreview
 	const [autoPlay, setAutoPlay] = useState(true);
 
 	const tabs = [
-		{ id: 'marketing', icon: FiTrendingUp, label: 'Marketing' },
-		{ id: 'analytics', icon: FiBarChart2, label: 'Redes Sociales' },
-		{ id: 'performance', icon: FiCpu, label: 'SEO/SEM' },
-		{ id: 'lead', icon: FiSearch, label: 'Leads' }
+		{ id: 'web', icon: FiTrendingUp, label: 'Desarrollo Web' },
+		{ id: 'software', icon: FiBarChart2, label: 'Software' },
+		{ id: 'cloud', icon: FiCpu, label: 'Cloud & DB' },
+		{ id: 'ai', icon: FiSearch, label: 'IA & ML' }
 	]
 
 	useEffect(() => {
@@ -47,115 +47,169 @@ export default function DashboardPreview({ type: initialType }: DashboardPreview
 
 	const getContent = () => {
 		switch (activeType) {
-			case 'marketing':
+			case 'web':
 				return (
-					<div className={`p-8 rounded-2xl shadow-2xl border ${isDarkTheme ? 'bg-gradient-to-br from-indigo-900 to-purple-900 border-purple-500/20' : 'bg-gradient-to-br from-indigo-500/40 to-purple-600/40 border-purple-400/60'}`}>
+					<div className={`p-8 rounded-2xl shadow-2xl border h-[800px] overflow-y-auto ${isDarkTheme ? 'bg-gradient-to-br from-indigo-900 to-purple-900 border-purple-500/20' : 'bg-gradient-to-br from-indigo-500/40 to-purple-600/40 border-purple-400/60'}`}>
 						<div className="mb-8">
-							<h3 className="text-2xl font-bold text-white mb-4">{t('Métricas de Marketing Digital')}</h3>
+							<h3 className="text-2xl font-bold text-white mb-4">{t('Desarrollo Web Profesional')}</h3>
 							<div className="grid grid-cols-3 gap-6">
 								<div className={`p-6 rounded-xl border transition-all duration-300 transform hover:-translate-y-1 ${isDarkTheme ? 'bg-indigo-800/50 border-purple-400/30 hover:border-purple-400/60' : 'bg-white/15 border-purple-400/70 hover:border-purple-500/90'}`}>
-									<div className="text-sm text-purple-200">{t('Tasa de Conversión')}</div>
-									<div className="text-3xl font-bold text-green-400 mt-2">12.8%</div>
-									<div className="text-sm text-green-300 mt-1">+2.5% vs mes anterior</div>
+									<div className="text-sm text-purple-200">{t('Rendimiento')}</div>
+									<div className="text-3xl font-bold text-green-400 mt-2">98%</div>
+									<div className="text-sm text-green-300 mt-1">Optimización Avanzada</div>
 								</div>
 								<div className={`p-6 rounded-xl border transition-all duration-300 transform hover:-translate-y-1 ${isDarkTheme ? 'bg-indigo-800/50 border-purple-400/30 hover:border-purple-400/60' : 'bg-white/15 border-purple-400/70 hover:border-purple-500/90'}`}>
-									<div className="text-sm text-purple-200">{t('Engagement')}</div>
-									<div className="text-3xl font-bold text-blue-400 mt-2">89%</div>
-									<div className="text-sm text-blue-300 mt-1">+15% interacción</div>
+									<div className="text-sm text-purple-200">{t('Velocidad de Carga')}</div>
+									<div className="text-3xl font-bold text-blue-400 mt-2">0.8s</div>
+									<div className="text-sm text-blue-300 mt-1">Líder en Rendimiento</div>
 								</div>
 								<div className={`p-6 rounded-xl border transition-all duration-300 transform hover:-translate-y-1 ${isDarkTheme ? 'bg-indigo-800/50 border-purple-400/30 hover:border-purple-400/60' : 'bg-white/15 border-purple-400/70 hover:border-purple-500/90'}`}>
-									<div className="text-sm text-purple-200">{t('ROI Marketing')}</div>
-									<div className="text-3xl font-bold text-purple-400 mt-2">485%</div>
-									<div className="text-sm text-purple-300 mt-1">+65% rentabilidad</div>
+									<div className="text-sm text-purple-200">{t('Posicionamiento SEO')}</div>
+									<div className="text-3xl font-bold text-purple-400 mt-2">95/100</div>
+									<div className="text-sm text-purple-300 mt-1">Máxima Visibilidad</div>
 								</div>
 							</div>
 						</div>
-						<div className="space-y-6">
+						<div className="grid grid-cols-2 gap-6">
 							<div className="bg-indigo-800/50 p-6 rounded-xl border border-purple-400/30">
 								<div className="flex justify-between items-center mb-4">
 									<div>
-										<div className="text-lg font-semibold text-white">{t('Rendimiento de Campañas')}</div>
-										<div className="text-sm text-purple-200 mt-1">Últimos 30 días</div>
+										<div className="text-lg font-semibold text-white">{t('Experiencia de Usuario')}</div>
+										<div className="text-sm text-purple-200 mt-1">Métricas Core Web Vitals</div>
 									</div>
-									<div className="text-green-400 text-xl font-bold">+48%</div>
+									<div className="text-green-400 text-xl font-bold">A+</div>
 								</div>
 								<div className="h-4 bg-indigo-900/50 rounded-full overflow-hidden">
-									<div className="h-full bg-gradient-to-r from-green-400 to-green-500 w-[85%] rounded-full"></div>
+									<div className="h-full bg-gradient-to-r from-green-400 to-green-500 w-[95%] rounded-full"></div>
 								</div>
 								<div className="mt-4 grid grid-cols-3 gap-4 text-sm">
-									<div className="text-purple-200">Alcance: 125K</div>
-									<div className="text-purple-200">Clics: 28.5K</div>
-									<div className="text-purple-200">CTR: 22.8%</div>
+									<div className="text-purple-200">FCP: 1.2s</div>
+									<div className="text-purple-200">LCP: 2.1s</div>
+									<div className="text-purple-200">CLS: 0.05</div>
 								</div>
 							</div>
 							<div className="bg-indigo-800/50 p-6 rounded-xl border border-purple-400/30">
 								<div className="flex justify-between items-center mb-4">
 									<div>
-										<div className="text-lg font-semibold text-white">{t('Generación de Leads')}</div>
-										<div className="text-sm text-purple-200 mt-1">Calificados vs Meta</div>
+										<div className="text-lg font-semibold text-white">{t('Rendimiento Técnico')}</div>
+										<div className="text-sm text-purple-200 mt-1">Optimización Avanzada</div>
 									</div>
-									<div className="text-blue-400 text-xl font-bold">+186</div>
+									<div className="text-blue-400 text-xl font-bold">98%</div>
 								</div>
 								<div className="h-4 bg-indigo-900/50 rounded-full overflow-hidden">
-									<div className="h-full bg-gradient-to-r from-blue-400 to-blue-500 w-[75%] rounded-full"></div>
+									<div className="h-full bg-gradient-to-r from-blue-400 to-blue-500 w-[98%] rounded-full"></div>
 								</div>
 								<div className="mt-4 grid grid-cols-3 gap-4 text-sm">
-									<div className="text-purple-200">MQL: 156</div>
-									<div className="text-purple-200">SQL: 98</div>
-									<div className="text-purple-200">Conversión: 62.8%</div>
+									<div className="text-purple-200">Cache: 99%</div>
+									<div className="text-purple-200">Compresión: 95%</div>
+									<div className="text-purple-200">Optimización: 98%</div>
 								</div>
 							</div>
 						</div>
+						<div className="bg-indigo-800/50 p-6 rounded-xl border border-purple-400/30 mt-8">
+							<div className="flex justify-between items-center mb-4">
+								<div>
+									<div className="text-lg font-semibold text-white">{t('Rendimiento Móvil')}</div>
+									<div className="text-sm text-purple-200 mt-1">Métricas de Dispositivos</div>
+								</div>
+								<div className="text-blue-400 text-xl font-bold">92%</div>
+							</div>
+							<div className="space-y-3">
+								<div>
+									<div className="flex justify-between text-sm mb-1">
+										<span className="text-purple-200">Velocidad de Carga</span>
+										<span className="text-green-400">1.2s</span>
+									</div>
+									<div className="h-2 bg-indigo-900/50 rounded-full overflow-hidden">
+										<div className="h-full bg-gradient-to-r from-green-400 to-green-500 w-[95%] rounded-full"></div>
+									</div>
+								</div>
+								<div>
+									<div className="flex justify-between text-sm mb-1">
+										<span className="text-purple-200">Optimización</span>
+										<span className="text-blue-400">92%</span>
+									</div>
+									<div className="h-2 bg-indigo-900/50 rounded-full overflow-hidden">
+										<div className="h-full bg-gradient-to-r from-blue-400 to-blue-500 w-[92%] rounded-full"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						{/* <div className="space-y-6 mt-8">
+							<div className="bg-indigo-800/50 p-6 rounded-xl border border-purple-400/30">
+								<div className="flex justify-between items-center mb-4">
+									<div>
+										<div className="text-lg font-semibold text-white">{t('Análisis de Tráfico')}</div>
+										<div className="text-sm text-purple-200 mt-1">Comportamiento de Usuarios</div>
+									</div>
+									<div className="text-green-400 text-xl font-bold">+45%</div>
+								</div>
+								<div className="grid grid-cols-3 gap-4">
+									<div className="text-center">
+										<div className="text-2xl font-bold text-purple-400">5.2</div>
+										<div className="text-sm text-purple-200">Páginas/Sesión</div>
+									</div>
+									<div className="text-center">
+										<div className="text-2xl font-bold text-blue-400">3:45</div>
+										<div className="text-sm text-purple-200">Tiempo Promedio</div>
+									</div>
+									<div className="text-center">
+										<div className="text-2xl font-bold text-green-400">0.8%</div>
+										<div className="text-sm text-purple-200">Tasa de Rebote</div>
+									</div>
+								</div>
+							</div>
+						</div> */}
 					</div>
 				)
-			case 'analytics':
+			case 'software':
 				return (
-					<div className={`p-8 rounded-2xl shadow-2xl border ${isDarkTheme ? 'bg-gradient-to-br from-indigo-900 to-purple-900 border-purple-500/20' : 'bg-gradient-to-br from-indigo-500/40 to-purple-600/40 border-purple-400/60'}`}>
+					<div className={`p-8 rounded-2xl shadow-2xl border h-[800px] overflow-y-auto ${isDarkTheme ? 'bg-gradient-to-br from-indigo-900 to-purple-900 border-purple-500/20' : 'bg-gradient-to-br from-indigo-500/40 to-purple-600/40 border-purple-400/60'}`}>
 						<div className="mb-8">
-							<h3 className="text-2xl font-bold text-white mb-4">{t('Métricas de Marketing Digital')}</h3>
+							<h3 className="text-2xl font-bold text-white mb-4">{t('Software Empresarial')}</h3>
 							<div className="grid grid-cols-3 gap-6">
 								<div className={`p-6 rounded-xl border transition-all duration-300 transform hover:-translate-y-1 ${isDarkTheme ? 'bg-indigo-800/50 border-purple-400/30 hover:border-purple-400/60' : 'bg-white/15 border-purple-400/70 hover:border-purple-500/90'}`}>
-									<div className="text-sm text-purple-200">{t('ROI por Canal')}</div>
-									<div className="text-3xl font-bold text-green-400 mt-2">385%</div>
-									<div className="text-sm text-green-300 mt-1">+45% vs mes anterior</div>
+									<div className="text-sm text-purple-200">{t('Eficiencia')}</div>
+									<div className="text-3xl font-bold text-green-400 mt-2">+180%</div>
+									<div className="text-sm text-green-300 mt-1">Mejora en Productividad</div>
 									<div className="mt-3 space-y-2">
 										<div className="flex justify-between text-xs">
-											<span className="text-purple-200">Google Ads</span>
-											<span className="text-green-400">425%</span>
+											<span className="text-purple-200">Automatización</span>
+											<span className="text-green-400">95%</span>
 										</div>
 										<div className="flex justify-between text-xs">
-											<span className="text-purple-200">Meta Ads</span>
-											<span className="text-green-400">356%</span>
+											<span className="text-purple-200">ROI</span>
+											<span className="text-green-400">320%</span>
 										</div>
 									</div>
 								</div>
 								<div className={`p-6 rounded-xl border transition-all duration-300 transform hover:-translate-y-1 ${isDarkTheme ? 'bg-indigo-800/50 border-purple-400/30 hover:border-purple-400/60' : 'bg-white/15 border-purple-400/70 hover:border-purple-500/90'}`}>
-									<div className="text-sm text-purple-200">{t('CAC por Fuente')}</div>
-									<div className="text-3xl font-bold text-blue-400 mt-2">$42.8</div>
-									<div className="text-sm text-blue-300 mt-1">-18% optimización</div>
+									<div className="text-sm text-purple-200">{t('Calidad de Código')}</div>
+									<div className="text-3xl font-bold text-blue-400 mt-2">A+</div>
+									<div className="text-sm text-blue-300 mt-1">Estándares Superiores</div>
 									<div className="mt-3 space-y-2">
 										<div className="flex justify-between text-xs">
-											<span className="text-purple-200">Orgánico</span>
-											<span className="text-blue-400">$28.5</span>
+											<span className="text-purple-200">Cobertura Tests</span>
+											<span className="text-blue-400">98%</span>
 										</div>
 										<div className="flex justify-between text-xs">
-											<span className="text-purple-200">Paid</span>
-											<span className="text-blue-400">$56.2</span>
+											<span className="text-purple-200">Code Review</span>
+											<span className="text-blue-400">100%</span>
 										</div>
 									</div>
 								</div>
 								<div className={`p-6 rounded-xl border transition-all duration-300 transform hover:-translate-y-1 ${isDarkTheme ? 'bg-indigo-800/50 border-purple-400/30 hover:border-purple-400/60' : 'bg-white/15 border-purple-400/70 hover:border-purple-500/90'}`}>
-									<div className="text-sm text-purple-200">{t('LTV Promedio')}</div>
-									<div className="text-3xl font-bold text-purple-400 mt-2">$850</div>
-									<div className="text-sm text-purple-300 mt-1">+28% retención</div>
+									<div className="text-sm text-purple-200">{t('Seguridad')}</div>
+									<div className="text-3xl font-bold text-purple-400 mt-2">A+</div>
+									<div className="text-sm text-purple-300 mt-1">Protección Total</div>
 									<div className="mt-3 space-y-2">
 										<div className="flex justify-between text-xs">
-											<span className="text-purple-200">6 meses</span>
-											<span className="text-purple-400">$420</span>
+											<span className="text-purple-200">Vulnerabilidades</span>
+											<span className="text-purple-400">0</span>
 										</div>
 										<div className="flex justify-between text-xs">
-											<span className="text-purple-200">12 meses</span>
-											<span className="text-purple-400">$850</span>
+											<span className="text-purple-200">Encriptación</span>
+											<span className="text-purple-400">256-bit</span>
 										</div>
 									</div>
 								</div>
@@ -226,167 +280,316 @@ export default function DashboardPreview({ type: initialType }: DashboardPreview
 						</div>
 					</div>
 				)
-			case 'performance':
+			case 'cloud':
 				return (
-					<div className={`p-8 rounded-2xl shadow-2xl border ${isDarkTheme ? 'bg-gradient-to-br from-indigo-900 to-purple-900 border-purple-500/20' : 'bg-gradient-to-br from-indigo-500/40 to-purple-600/40 border-purple-400/60'}`}>
-						<div className="mb-8">
-							<h3 className="text-2xl font-bold text-white mb-4">{t('Métricas SEO/SEM')}</h3>
-							<div className="grid grid-cols-2 gap-6">
-								<div className={`p-6 rounded-xl border transition-all duration-300 transform hover:-translate-y-1 ${isDarkTheme ? 'bg-indigo-800/50 border-purple-400/30 hover:border-purple-400/60' : 'bg-white/15 border-purple-400/70 hover:border-purple-500/90'}`}>
-									<div className="text-sm text-purple-200">{t('Posición Orgánica')}</div>
-									<div className="text-3xl font-bold text-blue-400 mt-2">Top 3</div>
-									<div className="text-sm text-blue-300 mt-1">+2 posiciones</div>
-									<div className="h-2 bg-indigo-900/50 rounded-full mt-4">
-										<div className="h-full bg-gradient-to-r from-blue-400 to-blue-500 w-11/12 rounded-full"></div>
+					<div className={`p-8 rounded-2xl shadow-2xl border h-[800px] overflow-y-auto ${isDarkTheme ? 'bg-gradient-to-br from-indigo-900 to-purple-900 border-purple-500/20' : 'bg-gradient-to-br from-indigo-500/40 to-purple-600/40 border-purple-400/60'}`}>
+						<div className="mb-0">
+							<h3 className="text-2xl font-bold text-white mb-4">{t('Cloud & Bases de Datos')}</h3>
+							<div className="grid grid-cols-4 gap-4 mb-6">
+								<div className={`p-5 rounded-xl border transition-all duration-300 transform hover:-translate-y-1 ${isDarkTheme ? 'bg-indigo-800/50 border-purple-400/30 hover:border-purple-400/60' : 'bg-white/15 border-purple-400/70 hover:border-purple-500/90'}`}>
+									<div className="text-sm text-purple-200 mb-2">{t('Disponibilidad')}</div>
+									<div className="text-3xl font-bold text-green-400">99.99%</div>
+									<div className="text-sm text-green-300 mt-1">Uptime Garantizado</div>
+									<div className="mt-3 space-y-2">
+										<div className="flex justify-between text-xs">
+											<span className="text-purple-200">Tiempo Respuesta</span>
+											<span className="text-green-400">50ms</span>
+										</div>
 									</div>
 								</div>
-								<div className={`p-6 rounded-xl border transition-all duration-300 transform hover:-translate-y-1 ${isDarkTheme ? 'bg-indigo-800/50 border-purple-400/30 hover:border-purple-400/60' : 'bg-white/15 border-purple-400/70 hover:border-purple-500/90'}`}>
-									<div className="text-sm text-purple-200">{t('CTR Promedio')}</div>
-									<div className="text-3xl font-bold text-purple-400 mt-2">4.8%</div>
+								<div className={`p-5 rounded-xl border transition-all duration-300 transform hover:-translate-y-1 ${isDarkTheme ? 'bg-indigo-800/50 border-purple-400/30 hover:border-purple-400/60' : 'bg-white/15 border-purple-400/70 hover:border-purple-500/90'}`}>
+									<div className="text-sm text-purple-200 mb-2">{t('CTR Promedio')}</div>
+									<div className="text-3xl font-bold text-purple-400">4.8%</div>
 									<div className="text-sm text-purple-300 mt-1">+0.5% vs mes anterior</div>
-									<div className="h-2 bg-indigo-900/50 rounded-full mt-4">
+									<div className="h-2 bg-indigo-900/50 rounded-full mt-3">
 										<div className="h-full bg-gradient-to-r from-purple-400 to-purple-500 w-8/12 rounded-full"></div>
 									</div>
 								</div>
-								<div className={`p-6 rounded-xl border transition-all duration-300 transform hover:-translate-y-1 ${isDarkTheme ? 'bg-indigo-800/50 border-purple-400/30 hover:border-purple-400/60' : 'bg-white/15 border-purple-400/70 hover:border-purple-500/90'}`}>
-									<div className="text-sm text-purple-200">{t('Tráfico Orgánico')}</div>
-									<div className="text-3xl font-bold text-green-400 mt-2">15.2K</div>
+								<div className={`p-5 rounded-xl border transition-all duration-300 transform hover:-translate-y-1 ${isDarkTheme ? 'bg-indigo-800/50 border-purple-400/30 hover:border-purple-400/60' : 'bg-white/15 border-purple-400/70 hover:border-purple-500/90'}`}>
+									<div className="text-sm text-purple-200 mb-2">{t('Tráfico Orgánico')}</div>
+									<div className="text-3xl font-bold text-green-400">15.2K</div>
 									<div className="text-sm text-green-300 mt-1">+28% este mes</div>
-									<div className="h-2 bg-indigo-900/50 rounded-full mt-4">
+									<div className="h-2 bg-indigo-900/50 rounded-full mt-3">
 										<div className="h-full bg-gradient-to-r from-green-400 to-green-500 w-10/12 rounded-full"></div>
 									</div>
 								</div>
-								<div className={`p-6 rounded-xl border transition-all duration-300 transform hover:-translate-y-1 ${isDarkTheme ? 'bg-indigo-800/50 border-purple-400/30 hover:border-purple-400/60' : 'bg-white/15 border-purple-400/70 hover:border-purple-500/90'}`}>
-									<div className="text-sm text-purple-200">{t('Backlinks')}</div>
-									<div className="text-3xl font-bold text-yellow-400 mt-2">850</div>
+								<div className={`p-5 rounded-xl border transition-all duration-300 transform hover:-translate-y-1 ${isDarkTheme ? 'bg-indigo-800/50 border-purple-400/30 hover:border-purple-400/60' : 'bg-white/15 border-purple-400/70 hover:border-purple-500/90'}`}>
+									<div className="text-sm text-purple-200 mb-2">{t('Backlinks')}</div>
+									<div className="text-3xl font-bold text-yellow-400">850</div>
 									<div className="text-sm text-yellow-300 mt-1">+120 nuevos</div>
-									<div className="h-2 bg-indigo-900/50 rounded-full mt-4">
+									<div className="h-2 bg-indigo-900/50 rounded-full mt-3">
 										<div className="h-full bg-gradient-to-r from-yellow-400 to-yellow-500 w-9/12 rounded-full"></div>
 									</div>
 								</div>
 							</div>
-							<div className="space-y-6">
+							<div className="grid grid-cols-2 gap-4">
 								<div className="bg-indigo-800/50 p-6 rounded-xl border border-purple-400/30">
 									<div className="flex justify-between items-center mb-4">
 										<div>
-											<div className="text-lg font-semibold text-white">{t('Rendimiento SEM')}</div>
-											<div className="text-sm text-purple-200 mt-1">Campaña actual</div>
+											<div className="text-lg font-semibold text-white">{t('Rendimiento Técnico')}</div>
+											<div className="text-sm text-purple-200 mt-1">Métricas del Sprint</div>
 										</div>
-										<div className="text-green-400 text-xl font-bold">8.5%</div>
+										<div className="text-green-400 text-xl font-bold">98%</div>
 									</div>
 									<div className="h-4 bg-indigo-900/50 rounded-full overflow-hidden">
-										<div className="h-full bg-gradient-to-r from-green-400 to-green-500 w-3/4 rounded-full"></div>
+										<div className="h-full bg-gradient-to-r from-green-400 to-green-500 w-[98%] rounded-full"></div>
 									</div>
 									<div className="mt-4 grid grid-cols-3 gap-4 text-sm">
-										<div className="text-purple-200">CPC: $1.25</div>
-										<div className="text-purple-200">Impresiones: 45K</div>
-										<div className="text-purple-200">Conversiones: 320</div>
+										<div className="text-purple-200">Cobertura Tests: 95%</div>
+										<div className="text-purple-200">Velocidad: 42 pts</div>
+										<div className="text-purple-200">Bugs: 0</div>
 									</div>
 								</div>
 								<div className="bg-indigo-800/50 p-6 rounded-xl border border-purple-400/30">
 									<div className="flex justify-between items-center mb-4">
 										<div>
-											<div className="text-lg font-semibold text-white">{t('Keywords Principales')}</div>
-											<div className="text-sm text-purple-200 mt-1">Top 5 posiciones</div>
+											<div className="text-lg font-semibold text-white">{t('Eficiencia del Proyecto')}</div>
+											<div className="text-sm text-purple-200 mt-1">Últimos 30 días</div>
 										</div>
-										<div className="text-blue-400 text-xl font-bold">25</div>
+										<div className="text-blue-400 text-xl font-bold">+45%</div>
 									</div>
 									<div className="h-4 bg-indigo-900/50 rounded-full overflow-hidden">
-										<div className="h-full bg-gradient-to-r from-blue-400 to-blue-500 w-4/5 rounded-full"></div>
+										<div className="h-full bg-gradient-to-r from-blue-400 to-blue-500 w-[85%] rounded-full"></div>
 									</div>
 									<div className="mt-4 grid grid-cols-2 gap-4 text-sm">
-										<div className="text-purple-200">Dificultad media: 45</div>
-										<div className="text-purple-200">Volumen: 25K/mes</div>
+										<div className="text-purple-200">Tiempo Desarrollo: -30%</div>
+										<div className="text-purple-200">ROI: +180%</div>
+									</div>
+								</div>
+							</div>
+							<div className="mt-6">
+								<div className="bg-indigo-800/50 p-6 rounded-xl border border-purple-400/30">
+									<div className="flex justify-between items-center mb-4">
+										<div>
+											<div className="text-lg font-semibold text-white">{t('Monitoreo de Recursos')}</div>
+											<div className="text-sm text-purple-200 mt-1">Estado del Sistema</div>
+										</div>
+										<div className="text-blue-400 text-xl font-bold">Óptimo</div>
+									</div>
+									<div className="grid grid-cols-3 gap-6">
+										<div className="text-center">
+											<div className="text-sm text-purple-200 mb-2">CPU</div>
+											<div className="relative inline-flex items-center justify-center">
+												<div className="absolute text-sm text-white">65%</div>
+												<svg className="transform -rotate-90 w-16 h-16">
+													<circle
+														className="text-indigo-900/50"
+														strokeWidth="4"
+														stroke="currentColor"
+														fill="transparent"
+														r="26"
+														cx="32"
+														cy="32"
+													/>
+													<circle
+														className="text-blue-400"
+														strokeWidth="4"
+														strokeDasharray={164}
+														strokeDashoffset={164 * 0.35}
+														strokeLinecap="round"
+														stroke="currentColor"
+														fill="transparent"
+														r="26"
+														cx="32"
+														cy="32"
+													/>
+												</svg>
+											</div>
+											<div className="text-sm text-blue-300 mt-2">Normal</div>
+										</div>
+										<div className="text-center">
+											<div className="text-sm text-purple-200 mb-2">Memoria</div>
+											<div className="relative inline-flex items-center justify-center">
+												<div className="absolute text-sm text-white">78%</div>
+												<svg className="transform -rotate-90 w-16 h-16">
+													<circle
+														className="text-indigo-900/50"
+														strokeWidth="4"
+														stroke="currentColor"
+														fill="transparent"
+														r="26"
+														cx="32"
+														cy="32"
+													/>
+													<circle
+														className="text-yellow-400"
+														strokeWidth="4"
+														strokeDasharray={164}
+														strokeDashoffset={164 * 0.22}
+														strokeLinecap="round"
+														stroke="currentColor"
+														fill="transparent"
+														r="26"
+														cx="32"
+														cy="32"
+													/>
+												</svg>
+											</div>
+											<div className="text-sm text-yellow-300 mt-2">Moderado</div>
+										</div>
+										<div className="text-center">
+											<div className="text-sm text-purple-200 mb-2">Almacenamiento</div>
+											<div className="relative inline-flex items-center justify-center">
+												<div className="absolute text-sm text-white">45%</div>
+												<svg className="transform -rotate-90 w-16 h-16">
+													<circle
+														className="text-indigo-900/50"
+														strokeWidth="4"
+														stroke="currentColor"
+														fill="transparent"
+														r="26"
+														cx="32"
+														cy="32"
+													/>
+													<circle
+														className="text-green-400"
+														strokeWidth="4"
+														strokeDasharray={164}
+														strokeDashoffset={164 * 0.55}
+														strokeLinecap="round"
+														stroke="currentColor"
+														fill="transparent"
+														r="26"
+														cx="32"
+														cy="32"
+													/>
+												</svg>
+											</div>
+											<div className="text-sm text-green-300 mt-2">Óptimo</div>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				)
-			case 'lead':
+			case 'ai':
 				return (
-					<div className={`p-8 rounded-2xl shadow-2xl border ${isDarkTheme ? 'bg-gradient-to-br from-indigo-900 to-purple-900 border-purple-500/20' : 'bg-gradient-to-br from-indigo-500/40 to-purple-600/40 border-purple-400/60'}`}>
+					<div className={`p-8 rounded-2xl shadow-2xl border h-[800px] overflow-y-auto ${isDarkTheme ? 'bg-gradient-to-br from-indigo-900 to-purple-900 border-purple-500/20' : 'bg-gradient-to-br from-indigo-500/40 to-purple-600/40 border-purple-400/60'}`}>
 						<div className="mb-8">
-							<h3 className="text-2xl font-bold text-white mb-4">{t('Métricas de Leads')}</h3>
+							<h3 className="text-2xl font-bold text-white mb-4">{t('Inteligencia Artificial & ML')}</h3>
 							<div className="grid grid-cols-3 gap-6">
 								<div className={`p-6 rounded-xl border transition-all duration-300 transform hover:-translate-y-1 ${isDarkTheme ? 'bg-indigo-800/50 border-purple-400/30 hover:border-purple-400/60' : 'bg-white/15 border-purple-400/70 hover:border-purple-500/90'}`}>
-									<div className="text-sm text-purple-200">{t('Tasa de Conversión MQL')}</div>
-									<div className="text-3xl font-bold text-green-400 mt-2">24.5%</div>
-									<div className="text-sm text-green-300 mt-1">+3.2% vs mes anterior</div>
+									<div className="text-sm text-purple-200">{t('Precisión del Modelo')}</div>
+									<div className="text-3xl font-bold text-green-400 mt-2">98.5%</div>
+									<div className="text-sm text-green-300 mt-1">Rendimiento Óptimo</div>
 								</div>
 								<div className={`p-6 rounded-xl border transition-all duration-300 transform hover:-translate-y-1 ${isDarkTheme ? 'bg-indigo-800/50 border-purple-400/30 hover:border-purple-400/60' : 'bg-white/15 border-purple-400/70 hover:border-purple-500/90'}`}>
-									<div className="text-sm text-purple-200">{t('Tiempo de Calificación')}</div>
-									<div className="text-3xl font-bold text-blue-400 mt-2">4.2h</div>
-									<div className="text-sm text-blue-300 mt-1">-15% tiempo promedio</div>
+									<div className="text-sm text-purple-200">{t('Escalabilidad')}</div>
+									<div className="text-3xl font-bold text-blue-400 mt-2">∞</div>
+									<div className="text-sm text-blue-300 mt-1">Auto-escalado</div>
+									<div className="mt-3 space-y-2">
+										<div className="flex justify-between text-xs">
+											<span className="text-purple-200">Carga Máxima</span>
+											<span className="text-blue-400">10K/s</span>
+										</div>
+									</div>
 								</div>
 								<div className={`p-6 rounded-xl border transition-all duration-300 transform hover:-translate-y-1 ${isDarkTheme ? 'bg-indigo-800/50 border-purple-400/30 hover:border-purple-400/60' : 'bg-white/15 border-purple-400/70 hover:border-purple-500/90'}`}>
-									<div className="text-sm text-purple-200">{t('Leads Calificados')}</div>
-									<div className="text-3xl font-bold text-purple-400 mt-2">342</div>
-									<div className="text-sm text-purple-300 mt-1">+28% este mes</div>
+									<div className="text-sm text-purple-200">{t('Seguridad')}</div>
+									<div className="text-3xl font-bold text-purple-400 mt-2">A+</div>
+									<div className="text-sm text-purple-300 mt-1">Máxima Protección</div>
+									<div className="mt-3 space-y-2">
+										<div className="flex justify-between text-xs">
+											<span className="text-purple-200">Encriptación</span>
+											<span className="text-purple-400">256-bit</span>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
 						<div className="space-y-6">
-							<div className="bg-indigo-800/50 p-6 rounded-xl border border-purple-400/30">
-								<div className="flex justify-between items-center mb-4">
-									<div>
-										<div className="text-lg font-semibold text-white">{t('Pipeline de Leads')}</div>
-										<div className="text-sm text-purple-200 mt-1">Estado actual</div>
+							<div className="grid grid-cols-2 gap-6">
+								<div className="bg-indigo-800/50 p-6 rounded-xl border border-purple-400/30">
+									<div className="flex justify-between items-center mb-4">
+										<div>
+											<div className="text-lg font-semibold text-white">{t('Rendimiento de Modelos')}</div>
+											<div className="text-sm text-purple-200 mt-1">Métricas de Precisión</div>
+										</div>
+										<div className="text-green-400 text-xl font-bold">98.5%</div>
 									</div>
-									<div className="text-green-400 text-xl font-bold">+186</div>
+									<div className="space-y-3">
+										<div>
+											<div className="flex justify-between text-sm mb-1">
+												<span className="text-purple-200">Clasificación</span>
+												<span className="text-purple-200">99.2%</span>
+											</div>
+											<div className="h-2 bg-indigo-900/50 rounded-full overflow-hidden">
+												<div className="h-full bg-gradient-to-r from-purple-400 to-purple-500 w-[99%] rounded-full"></div>
+											</div>
+										</div>
+										<div>
+											<div className="flex justify-between text-sm mb-1">
+												<span className="text-purple-200">Predicción</span>
+												<span className="text-purple-200">97.8%</span>
+											</div>
+											<div className="h-2 bg-indigo-900/50 rounded-full overflow-hidden">
+												<div className="h-full bg-gradient-to-r from-blue-400 to-blue-500 w-[98%] rounded-full"></div>
+											</div>
+										</div>
+										<div>
+											<div className="flex justify-between text-sm mb-1">
+												<span className="text-purple-200">Optimización</span>
+												<span className="text-purple-200">98.5%</span>
+											</div>
+											<div className="h-2 bg-indigo-900/50 rounded-full overflow-hidden">
+												<div className="h-full bg-gradient-to-r from-green-400 to-green-500 w-[98%] rounded-full"></div>
+											</div>
+										</div>
+									</div>
 								</div>
-								<div className="space-y-3">
-									<div>
-										<div className="flex justify-between text-sm mb-1">
-											<span className="text-purple-200">Nuevos</span>
-											<span className="text-purple-200">450</span>
+								<div className="bg-indigo-800/50 p-6 rounded-xl border border-purple-400/30">
+									<div className="flex justify-between items-center mb-4">
+										<div>
+											<div className="text-lg font-semibold text-white">{t('Tendencias de Uso')}</div>
+											<div className="text-sm text-purple-200 mt-1">Últimos 30 días</div>
 										</div>
-										<div className="h-2 bg-indigo-900/50 rounded-full overflow-hidden">
-											<div className="h-full bg-gradient-to-r from-purple-400 to-purple-500 w-full rounded-full"></div>
-										</div>
+										<div className="text-blue-400 text-xl font-bold">+65%</div>
 									</div>
-									<div>
-										<div className="flex justify-between text-sm mb-1">
-											<span className="text-purple-200">En Calificación</span>
-											<span className="text-purple-200">285</span>
+									<div className="space-y-3">
+										<div>
+											<div className="flex justify-between text-sm mb-1">
+												<span className="text-purple-200">Consultas Diarias</span>
+												<span className="text-green-400">25K</span>
+											</div>
+											<div className="h-2 bg-indigo-900/50 rounded-full overflow-hidden">
+												<div className="h-full bg-gradient-to-r from-green-400 to-green-500 w-[85%] rounded-full"></div>
+											</div>
 										</div>
-										<div className="h-2 bg-indigo-900/50 rounded-full overflow-hidden">
-											<div className="h-full bg-gradient-to-r from-blue-400 to-blue-500 w-[75%] rounded-full"></div>
-										</div>
-									</div>
-									<div>
-										<div className="flex justify-between text-sm mb-1">
-											<span className="text-purple-200">Calificados</span>
-											<span className="text-purple-200">165</span>
-										</div>
-										<div className="h-2 bg-indigo-900/50 rounded-full overflow-hidden">
-											<div className="h-full bg-gradient-to-r from-green-400 to-green-500 w-[45%] rounded-full"></div>
+										<div>
+											<div className="flex justify-between text-sm mb-1">
+												<span className="text-purple-200">Usuarios Activos</span>
+												<span className="text-blue-400">12.5K</span>
+											</div>
+											<div className="h-2 bg-indigo-900/50 rounded-full overflow-hidden">
+												<div className="h-full bg-gradient-to-r from-blue-400 to-blue-500 w-[75%] rounded-full"></div>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
+						</div>
+						<div className="space-y-6 mt-8">
 							<div className="bg-indigo-800/50 p-6 rounded-xl border border-purple-400/30">
 								<div className="flex justify-between items-center mb-4">
 									<div>
-										<div className="text-lg font-semibold text-white">{t('Fuentes de Leads')}</div>
-										<div className="text-sm text-purple-200 mt-1">Top canales</div>
+										<div className="text-lg font-semibold text-white">{t('Eficiencia del Modelo')}</div>
+										<div className="text-sm text-purple-200 mt-1">Rendimiento en Producción</div>
 									</div>
-									<div className="text-blue-400 text-xl font-bold">+32%</div>
+									<div className="text-blue-400 text-xl font-bold">99.8%</div>
 								</div>
 								<div className="grid grid-cols-2 gap-4">
 									<div>
-										<div className="text-sm text-purple-200 mb-2">Orgánico</div>
+										<div className="text-sm text-purple-200 mb-2">Tiempo de Inferencia</div>
 										<div className="h-2 bg-indigo-900/50 rounded-full overflow-hidden">
-											<div className="h-full bg-gradient-to-r from-green-400 to-green-500 w-[65%] rounded-full"></div>
+											<div className="h-full bg-gradient-to-r from-green-400 to-green-500 w-[95%] rounded-full"></div>
 										</div>
-										<div className="text-xs text-green-400 mt-1">65% - 225 leads</div>
 									</div>
 									<div>
-										<div className="text-sm text-purple-200 mb-2">Paid Search</div>
+										<div className="text-sm text-purple-200 mb-2">Uso de Recursos</div>
 										<div className="h-2 bg-indigo-900/50 rounded-full overflow-hidden">
-											<div className="h-full bg-gradient-to-r from-blue-400 to-blue-500 w-[35%] rounded-full"></div>
+											<div className="h-full bg-gradient-to-r from-blue-400 to-blue-500 w-[85%] rounded-full"></div>
 										</div>
-										<div className="text-xs text-blue-400 mt-1">35% - 125 leads</div>
 									</div>
 								</div>
 							</div>

@@ -1,4 +1,5 @@
 import { SupabaseClient } from '@supabase/supabase-js';
+import { supabase } from '../context/AuthContext';
 
 interface NewsletterSubscription {
   id?: string;
@@ -40,7 +41,8 @@ class NewsletterService {
           {
             email,
             subscribed_at: new Date().toISOString(),
-            status: 'active'
+            status: 'active',
+            website: 'developerjeremylive'
           }
         ])
         .select()
@@ -70,4 +72,5 @@ class NewsletterService {
   }
 }
 
-export default new NewsletterService();
+
+export default new NewsletterService(supabase);

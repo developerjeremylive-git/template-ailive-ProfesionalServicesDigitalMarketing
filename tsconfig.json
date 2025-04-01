@@ -1,15 +1,22 @@
 {
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" },
-    { "path": "./tsconfig.worker.json" }
-],
-"compilerOptions": {
-    "types": [
-        "@cloudflare/workers-types/2023-07-01",
-        "node",
-        "next"
-    ]
-}
+    "files": [],
+    "references": [
+        {
+            "path": "./tsconfig.app.json"
+        },
+        {
+            "path": "./tsconfig.node.json"
+        },
+        {
+            "path": "./tsconfig.worker.json"
+        }
+    ],
+    "compilerOptions": {
+        "types": [
+            "@cloudflare/workers-types/2023-07-01",
+            "node",
+            "next"
+        ],
+        "jsx": "react-jsx"
+    }
 }

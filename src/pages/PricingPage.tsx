@@ -187,69 +187,69 @@ export default function PricingPage() {
   const fallbackPlans = [
     {
       id: 'free',
-      name: currentLanguage === 'es' ? 'Gratis' : 'Free',
-      description: currentLanguage === 'es' ? 'Funciones básicas para uso personal' : 'Basic features for personal use',
+      name: currentLanguage === 'es' ? 'Consulta Inicial' : 'Initial Consultation',
+      description: currentLanguage === 'es' ? 'Primera sesión de consultoría tecnológica' : 'First technology consultation session',
       price_monthly: 0,
       price_yearly: 0,
       billing_cycle: 'monthly',
       features: [
-        currentLanguage === 'es' ? 'Análisis SEO básico' : 'Basic SEO Analysis',
-        currentLanguage === 'es' ? 'Landing page simple' : 'Simple Landing Page',
-        currentLanguage === 'es' ? 'Tienda básica Shopify' : 'Basic Shopify Store',
-        currentLanguage === 'es' ? 'Soporte por email' : 'Email Support',
-        currentLanguage === 'es' ? 'Tiempo de respuesta: 24h' : 'Response Time: 24h'
+        currentLanguage === 'es' ? '30 minutos de consultoría gratuita' : '30 minutes free consultation',
+        currentLanguage === 'es' ? 'Evaluación de necesidades tecnológicas' : 'Technology needs assessment',
+        currentLanguage === 'es' ? 'Recomendaciones iniciales' : 'Initial recommendations',
+        currentLanguage === 'es' ? 'Plan de acción preliminar' : 'Preliminary action plan',
+        currentLanguage === 'es' ? 'Presupuesto estimado' : 'Estimated budget'
       ],
       popular: false,
     },
     {
       id: 'starter',
-      name: currentLanguage === 'es' ? 'Inicial' : 'Starter',
-      description: currentLanguage === 'es' ? 'Funciones mejoradas para equipos pequeños' : 'Enhanced features for small teams',
-      price_monthly: 9.99,
-      price_yearly: 99.99,
+      name: currentLanguage === 'es' ? 'Consultoría Básica' : 'Basic Consulting',
+      description: currentLanguage === 'es' ? 'Asesoramiento tecnológico esencial' : 'Essential technology consulting',
+      price_monthly: 199.99,
+      price_yearly: 1999.99,
       billing_cycle: 'monthly',
       features: [
-        currentLanguage === 'es' ? 'Estrategia SEO/SEM completa' : 'Complete SEO/SEM Strategy',
-        currentLanguage === 'es' ? 'Desarrollo WordPress profesional' : 'Professional WordPress Development',
-        currentLanguage === 'es' ? 'Tienda Shopify optimizada' : 'Optimized Shopify Store',
-        currentLanguage === 'es' ? 'Gestión de redes sociales' : 'Social Media Management',
-        currentLanguage === 'es' ? 'Soporte prioritario' : 'Priority Support',
-        currentLanguage === 'es' ? 'Tiempo de respuesta: 12h' : 'Response Time: 12h'
+        currentLanguage === 'es' ? '10 horas mensuales de consultoría' : '10 monthly consulting hours',
+        currentLanguage === 'es' ? 'Análisis de infraestructura actual' : 'Current infrastructure analysis',
+        currentLanguage === 'es' ? 'Optimización de procesos técnicos' : 'Technical process optimization',
+        currentLanguage === 'es' ? 'Soporte por correo prioritario' : 'Priority email support',
+        currentLanguage === 'es' ? 'Informes mensuales de progreso' : 'Monthly progress reports',
+        currentLanguage === 'es' ? 'Acceso a recursos técnicos' : 'Access to technical resources'
       ],
       popular: true,
     },
     {
       id: 'pro',
-      name: currentLanguage === 'es' ? 'Profesional' : 'Professional',
-      description: currentLanguage === 'es' ? 'Funciones avanzadas para empresas' : 'Advanced features for businesses',
-      price_monthly: 19.99,
-      price_yearly: 199.99,
+      name: currentLanguage === 'es' ? 'Consultoría Profesional' : 'Professional Consulting',
+      description: currentLanguage === 'es' ? 'Asesoramiento tecnológico avanzado' : 'Advanced technology consulting',
+      price_monthly: 499.99,
+      price_yearly: 4999.99,
       billing_cycle: 'monthly',
       features: [
-        currentLanguage === 'es' ? 'Todas las funciones del plan Inicial' : 'All Starter Features',
-        currentLanguage === 'es' ? 'Campañas PPC avanzadas' : 'Advanced PPC Campaigns',
-        currentLanguage === 'es' ? 'Desarrollo web personalizado (SPA)' : 'Custom Web Development (SPA)',
-        currentLanguage === 'es' ? 'Tienda Shopify personalizada' : 'Custom Shopify Store',
-        currentLanguage === 'es' ? 'Automatización de marketing' : 'Marketing Automation',
-        currentLanguage === 'es' ? 'Análisis y reportes avanzados' : 'Advanced Analytics & Reports',
-        currentLanguage === 'es' ? 'Soporte premium 24/7' : '24/7 Premium Support'
+        currentLanguage === 'es' ? 'Todas las funciones del plan Básico' : 'All Basic Plan Features',
+        currentLanguage === 'es' ? '25 horas mensuales de consultoría' : '25 monthly consulting hours',
+        currentLanguage === 'es' ? 'Arquitectura de soluciones personalizadas' : 'Custom solution architecture',
+        currentLanguage === 'es' ? 'Consultoría de transformación digital' : 'Digital transformation consulting',
+        currentLanguage === 'es' ? 'Soporte telefónico prioritario' : 'Priority phone support',
+        currentLanguage === 'es' ? 'Revisiones semanales de proyecto' : 'Weekly project reviews',
+        currentLanguage === 'es' ? 'Acceso a workshops exclusivos' : 'Access to exclusive workshops'
       ],
       popular: false,
     },
     {
       id: 'enterprise',
-      name: currentLanguage === 'es' ? 'Empresarial' : 'Enterprise',
-      description: currentLanguage === 'es' ? 'Acceso completo para grandes organizaciones' : 'Complete access for large organizations',
-      price_monthly: 99.99,
-      price_yearly: 999.99,
+      name: currentLanguage === 'es' ? 'Consultoría Empresarial' : 'Enterprise Consulting',
+      description: currentLanguage === 'es' ? 'Consultoría tecnológica integral' : 'Comprehensive technology consulting',
+      price_monthly: 999.99,
+      price_yearly: 9999.99,
       billing_cycle: 'monthly',
       features: [
         currentLanguage === 'es' ? 'Todas las funciones del plan Profesional' : 'All Professional Features',
-        currentLanguage === 'es' ? 'Estrategia digital integral' : 'Comprehensive Digital Strategy',
-        currentLanguage === 'es' ? 'Desarrollo web empresarial' : 'Enterprise Web Development',
-        currentLanguage === 'es' ? 'Soluciones e-commerce a medida' : 'Custom E-commerce Solutions',
-        currentLanguage === 'es' ? 'Integraciones personalizadas' : 'Custom Integrations',
-        currentLanguage === 'es' ? 'Equipo dedicado 24/7' : '24/7 Dedicated Team'
+        currentLanguage === 'es' ? 'Horas ilimitadas de consultoría' : 'Unlimited consulting hours',
+        currentLanguage === 'es' ? 'Consultor tecnológico dedicado' : 'Dedicated technology consultant',
+        currentLanguage === 'es' ? 'Estrategia tecnológica personalizada' : 'Custom technology strategy',
+        currentLanguage === 'es' ? 'Soporte 24/7 con respuesta inmediata' : '24/7 immediate response support',
+        currentLanguage === 'es' ? 'Auditorías tecnológicas trimestrales' : 'Quarterly technology audits'
       ],
       popular: false,
     },
@@ -382,7 +382,7 @@ export default function PricingPage() {
         return;
       }
 
-      const stripe = new Stripe(import.meta.env.VITE_STRIPE_SECRET_KEY as string);
+      const stripe = new Stripe((import.meta as any).env.VITE_STRIPE_SECRET_KEY as string);
 
       if (customerId) {
         try {
@@ -485,7 +485,8 @@ export default function PricingPage() {
   return (
     <PayPalScriptProvider
       options={{
-        "client-id": import.meta.env ? import.meta.env.VITE_PAYPAL_CLIENT_ID || "" : "",
+        clientId: (import.meta as any).env ? (import.meta as any).env.VITE_PAYPAL_CLIENT_ID || "" : "",
+        "client-id": (import.meta as any).env ? (import.meta as any).env.VITE_PAYPAL_CLIENT_ID || "" : "",
         currency: "USD",
         vault: true,
         locale: currentLanguage === 'es' ? 'es_MX' : 'en_US'
@@ -501,10 +502,15 @@ export default function PricingPage() {
               animate={{ opacity: 1, y: 0 }}
               className="text-center max-w-3xl mx-auto mb-16"
             >
-              <h1 className="text-4xl md:text-5xl font-bold text-[var(--theme-text-primary)] mb-6">
+              <motion.h1
+                className="text-6xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-purple-400 via-pink-500 to-purple-600 text-center mb-6 drop-shadow-[0_0_25px_rgba(168,85,247,0.35)] tracking-tight leading-none px-4 mt-8"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, ease: 'easeOut' }}
+              >
                 {currentLanguage === 'es' ? 'Precios Simples y Transparentes' : 'Simple, Transparent Pricing'}
-              </h1>
-              <p className="text-lg text-[var(--theme-text-secondary)]">
+              </motion.h1>
+              <p className="text-xl text-[var(--theme-text-secondary)] max-w-3xl mx-auto leading-relaxed">
                 {currentLanguage === 'es' ? 'Elige el plan que mejor se adapte a tus necesidades' : 'Choose the plan that best fits your needs'}
               </p>
 
@@ -673,7 +679,7 @@ export default function PricingPage() {
                     </ul>
 
                     <div className="space-y-6 p-4">
-                      <motion.button
+                      {/* <motion.button
                         whileHover={{ scale: 1.02, boxShadow: '0 8px 16px rgba(123, 43, 249, 0.2)' }}
                         whileTap={{ scale: 0.98 }}
                         style={{
@@ -699,7 +705,7 @@ export default function PricingPage() {
                             <div className="ml-2 animate-spin rounded-full h-5 w-5 border-t-2 border-white"></div>
                           )}
                         </span>
-                      </motion.button>
+                      </motion.button> */}
 
                       <div className="mt-4">
                         <motion.div
@@ -746,32 +752,32 @@ export default function PricingPage() {
             {/* FAQ Section */}
             <div className="mt-24 max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-center text-[var(--theme-text-primary)] mb-12">
-                {currentLanguage === 'es' ? 'Preguntas Frecuentes sobre Nuestros Servicios' : 'Frequently Asked Questions About Our Services'}
+                {currentLanguage === 'es' ? 'Preguntas Frecuentes sobre Nuestros Servicios Profesionales' : 'Frequently Asked Questions About Our Professional Services'}
               </h2>
               <div className="grid gap-8">
                 <div>
                   <h3 className="text-xl font-semibold text-[var(--theme-text-primary)] mb-2">
-                    {currentLanguage === 'es' ? '¿Qué incluye el servicio de Marketing Digital?' : 'What does the Digital Marketing service include?'}
+                    {currentLanguage === 'es' ? '¿Qué servicios profesionales ofrecen?' : 'What professional services do you offer?'}
                   </h3>
-                  <p className="text-[var(--theme-text-secondary)]">{currentLanguage === 'es' ? 'Nuestro servicio de Marketing Digital incluye estrategias SEO/SEM personalizadas, gestión de redes sociales, análisis de datos y campañas de publicidad optimizadas. Trabajamos con objetivos medibles y reportes mensuales de resultados.' : 'Our Digital Marketing service includes customized SEO/SEM strategies, social media management, data analytics, and optimized advertising campaigns. We work with measurable goals and monthly performance reports.'}</p>
+                  <p className="text-[var(--theme-text-secondary)]">{currentLanguage === 'es' ? 'Ofrecemos servicios integrales de desarrollo de software personalizado, implementación de soluciones cloud, y desarrollo de aplicaciones de IA avanzadas. Nuestro equipo está especializado en crear soluciones empresariales escalables y eficientes.' : 'We offer comprehensive custom software development services, cloud solution implementation, and advanced AI application development. Our team specializes in creating scalable and efficient enterprise solutions.'}</p>
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold text-[var(--theme-text-primary)] mb-2">
-                    {currentLanguage === 'es' ? '¿Cómo funciona el desarrollo web con WordPress?' : 'How does WordPress web development work?'}
+                    {currentLanguage === 'es' ? '¿Cómo garantizan la calidad del servicio?' : 'How do you ensure service quality?'}
                   </h3>
-                  <p className="text-[var(--theme-text-secondary)]">{currentLanguage === 'es' ? 'Desarrollamos sitios web profesionales con WordPress, incluyendo diseño personalizado, optimización SEO, integración con WooCommerce y plugins premium. El proceso incluye planificación, diseño, desarrollo y capacitación para gestionar tu sitio.' : 'We develop professional WordPress websites including custom design, SEO optimization, WooCommerce integration, and premium plugins. The process includes planning, design, development, and training to manage your site.'}</p>
+                  <p className="text-[var(--theme-text-secondary)]">{currentLanguage === 'es' ? 'Implementamos metodologías ágiles con ciclos de retroalimentación constante, pruebas rigurosas y control de calidad en cada fase. Utilizamos las mejores prácticas de la industria y mantenemos una comunicación transparente durante todo el proyecto.' : 'We implement agile methodologies with constant feedback cycles, rigorous testing, and quality control at every phase. We use industry best practices and maintain transparent communication throughout the project.'}</p>
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold text-[var(--theme-text-primary)] mb-2">
-                    {currentLanguage === 'es' ? '¿Qué beneficios ofrece la solución E-commerce?' : 'What benefits does the E-commerce solution offer?'}
+                    {currentLanguage === 'es' ? '¿Qué tecnologías y herramientas utilizan?' : 'What technologies and tools do you use?'}
                   </h3>
-                  <p className="text-[var(--theme-text-secondary)]">{currentLanguage === 'es' ? 'Nuestra solución E-commerce con Shopify incluye configuración completa de la tienda, diseño personalizado, integración de métodos de pago, gestión de inventario y estrategias de conversión. Garantizamos una experiencia de compra optimizada y soporte continuo.' : 'Our Shopify E-commerce solution includes complete store setup, custom design, payment gateway integration, inventory management, and conversion strategies. We ensure an optimized shopping experience and ongoing support.'}</p>
+                  <p className="text-[var(--theme-text-secondary)]">{currentLanguage === 'es' ? 'Trabajamos con las últimas tecnologías en desarrollo web, cloud computing y machine learning. Utilizamos frameworks modernos, herramientas de IA avanzadas y plataformas cloud líderes para entregar soluciones robustas y escalables.' : 'We work with the latest technologies in web development, cloud computing, and machine learning. We use modern frameworks, advanced AI tools, and leading cloud platforms to deliver robust and scalable solutions.'}</p>
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold text-[var(--theme-text-primary)] mb-2">
-                    {currentLanguage === 'es' ? '¿Cuál es el proceso de implementación?' : 'What is the implementation process?'}
+                    {currentLanguage === 'es' ? '¿Cómo manejan el soporte y mantenimiento?' : 'How do you handle support and maintenance?'}
                   </h3>
-                  <p className="text-[var(--theme-text-secondary)]">{currentLanguage === 'es' ? 'Iniciamos con una consulta detallada para entender tus objetivos, desarrollamos una estrategia personalizada, implementamos las soluciones y proporcionamos seguimiento continuo. Cada servicio incluye soporte técnico prioritario y actualizaciones regulares.' : 'We start with a detailed consultation to understand your goals, develop a customized strategy, implement solutions, and provide ongoing monitoring. Each service includes priority technical support and regular updates.'}</p>
+                  <p className="text-[var(--theme-text-secondary)]">{currentLanguage === 'es' ? 'Ofrecemos soporte técnico continuo, monitoreo proactivo y mantenimiento regular de todas las soluciones implementadas. Nuestro equipo está disponible para resolver problemas y realizar actualizaciones según sea necesario.' : 'We provide ongoing technical support, proactive monitoring, and regular maintenance of all implemented solutions. Our team is available to resolve issues and perform updates as needed.'}</p>
                 </div>
               </div>
             </div>

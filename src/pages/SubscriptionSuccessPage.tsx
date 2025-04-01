@@ -32,9 +32,9 @@ const SubscriptionSuccessPage: React.FC = () => {
     // Function to get PayPal access token
     const getPayPalAccessToken = async (): Promise<string> => {
       try {
-        const PAYPAL_API_URL = import.meta.env.VITE_PAYPAL_API_URL || 'https://api-m.sandbox.paypal.com';
-        const PAYPAL_CLIENT_ID = import.meta.env.VITE_PAYPAL_CLIENT_ID;
-        const PAYPAL_SECRET = import.meta.env.VITE_PAYPAL_CLIENT_SECRET;
+        const PAYPAL_API_URL = (import.meta as any).env.VITE_PAYPAL_API_URL || 'https://api-m.paypal.com';
+        const PAYPAL_CLIENT_ID = (import.meta as any).env.VITE_PAYPAL_CLIENT_ID;
+        const PAYPAL_SECRET = (import.meta as any).env.VITE_PAYPAL_CLIENT_SECRET;
 
         if (!PAYPAL_CLIENT_ID || !PAYPAL_SECRET) {
           throw new Error('PayPal client ID or secret not found in environment variables');
@@ -78,7 +78,7 @@ const SubscriptionSuccessPage: React.FC = () => {
         } else if (paypalSubscriptionId) {
           // Handle PayPal subscription
           const accessToken = await getPayPalAccessToken();
-          const PAYPAL_API_URL = import.meta.env.VITE_PAYPAL_API_URL || 'https://api-m.sandbox.paypal.com';
+          const PAYPAL_API_URL = (import.meta as any).env.VITE_PAYPAL_API_URL || 'https://api-m.paypal.com';
           
           const response = await fetch(`${PAYPAL_API_URL}/v1/billing/subscriptions/${paypalSubscriptionId}`, {
             headers: {

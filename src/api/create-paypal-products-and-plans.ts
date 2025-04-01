@@ -38,7 +38,7 @@ const createPayPalProductsAndPlans = async (req: NextApiRequest, res: NextApiRes
       const productData: PayPalProduct[] = [];
 
       for (const product of products) {
-        const productResponse = await fetch('https://api-m.sandbox.paypal.com/v1/catalogs/products', {
+        const productResponse = await fetch('https://api-m.paypal.com/v1/catalogs/products', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${accessToken}` },
           body: JSON.stringify(product),
@@ -61,7 +61,7 @@ const createPayPalProductsAndPlans = async (req: NextApiRequest, res: NextApiRes
       const planData: PayPalPlan[] = [];
 
       for (const plan of plans) {
-        const planResponse = await fetch('https://api-m.sandbox.paypal.com/v1/billing/plans', {
+        const planResponse = await fetch('https://api-m.paypal.com/v1/billing/plans', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${accessToken}` },
           body: JSON.stringify({

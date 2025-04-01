@@ -21,7 +21,6 @@ export default function AuthPopup({ triggerReason, onAuthComplete }: AuthPopupPr
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [username, setUsername] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [accessToken, setAccessToken] = useState<string | null>(null);
@@ -122,6 +121,15 @@ export default function AuthPopup({ triggerReason, onAuthComplete }: AuthPopupPr
     document.body.appendChild(popup);
   };
 
+  const handleRedirect = () => {
+    if (triggerReason === 'send_button') {
+      // Stay on the current page if triggered by send button
+      return;
+    }
+    // Default redirect to home page
+    navigate('/');
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
@@ -182,9 +190,9 @@ export default function AuthPopup({ triggerReason, onAuthComplete }: AuthPopupPr
         }
       } else {
         // Registration mode
-        const { error, user } = await signUp(email, password, username);
+        const { error, user } = await signUp(email, password);
         if (error) {
-          setError(t('registration_error'));
+          setError(error?.message || t('registration_error'));
         } else {
           setIsLoginOpen(false);
           resetForm();
@@ -207,7 +215,6 @@ export default function AuthPopup({ triggerReason, onAuthComplete }: AuthPopupPr
     setEmail('');
     setPassword('');
     setConfirmPassword('');
-    setUsername('');
     setError(null);
     setIsLoading(false);
   };
@@ -217,7 +224,6 @@ export default function AuthPopup({ triggerReason, onAuthComplete }: AuthPopupPr
     setError(null);
     setEmail('');
     setPassword('');
-    setUsername('');
   };
 
   const popupVariants = {

@@ -1,5 +1,5 @@
 # Starter Product
-curl -v -X POST https://api-m.sandbox.paypal.com/v1/catalogs/products \
+curl -v -X POST https://api-m.paypal.com/v1/catalogs/products \
 -H 'Authorization: Bearer A21AAK7KzDlo0xX_lLJKv2j6erYlkmrhEczbPaMpq3YwQXeiom7TTOcqWjSTfMbH_MuOdzoYeSwNY9tkx1fbVk71klsRVf7bQ' \
 -H 'Content-Type: application/json' \
 -H 'Accept: application/json' \
